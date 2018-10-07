@@ -1,11 +1,40 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 
-export default class App extends React.Component {
+export default class ButtonBasics extends Component {
+  _onPressButton() {
+    Alert.alert('You tapped the button!')
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="1"
+            marginTop=""
+            
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="2"
+            color="#841584"
+          />
+        </View>
+        <View style={styles.alternativeLayoutButtonContainer}>
+          <Button
+            onPress={this._onPressButton}
+            title="3"
+          />
+          <Button
+            onPress={this._onPressButton}
+            title="4"
+            color="#841584"
+          />
+        </View>
       </View>
     );
   }
@@ -13,9 +42,15 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+   flex: 1,
+   justifyContent: 'center',
   },
+  buttonContainer: {
+    // margin: 20
+  },
+  alternativeLayoutButtonContainer: {
+    // margin: 20,
+    // flexDirection: 'row',
+    // justifyContent: 'space-between'
+  }
 });
