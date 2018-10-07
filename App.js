@@ -3,38 +3,43 @@ import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native
 
 export default class ButtonBasics extends Component {
   _onPressButton() {
-    Alert.alert('You tapped the button!')
+    Alert.alert('Alert')
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.buttonContainer}>
+
+        <View style={styles.buttonContainer1}>
           <Button
             onPress={this._onPressButton}
             title="1"
-            marginTop=""
-            
           />
         </View>
-        <View style={styles.buttonContainer}>
+
+        <View style={styles.buttonContainer2}>
           <Button
             onPress={this._onPressButton}
             title="2"
             color="#841584"
           />
         </View>
-        <View style={styles.alternativeLayoutButtonContainer}>
+
+        <View style={styles.buttonContainer3}>
           <Button
             onPress={this._onPressButton}
             title="3"
           />
+        </View>
+
+        <View style={styles.buttonContainer4}>
           <Button
             onPress={this._onPressButton}
             title="4"
             color="#841584"
           />
         </View>
+
       </View>
     );
   }
@@ -42,15 +47,40 @@ export default class ButtonBasics extends Component {
 
 const styles = StyleSheet.create({
   container: {
-   flex: 1,
-   justifyContent: 'center',
+   width: "100%",
+   height: "100%",
+   backgroundColor: "black",
   },
-  buttonContainer: {
-    // margin: 20
+  buttonContainer1: {
+    marginTop: 30,
+    marginLeft: 30,
+    left: 0,
+    top: 0,
+    backgroundColor: "red",
+    position: "absolute",
   },
-  alternativeLayoutButtonContainer: {
-    // margin: 20,
-    // flexDirection: 'row',
-    // justifyContent: 'space-between'
-  }
+  buttonContainer2: {
+    marginTop: 30,
+    marginRight: 30,
+    right: 0,
+    top: 0,
+    backgroundColor: "blue",
+    position: "absolute",
+  },
+  buttonContainer3: {
+    marginBottom: 30,
+    marginLeft: 30,
+    left: 0,
+    bottom: 0,
+    backgroundColor: "green",
+    position: "absolute",
+  },
+  buttonContainer4: {
+    marginRight: 30,
+    marginBottom: 30,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "purple",
+    position: "absolute",
+  },
 });
