@@ -8,4 +8,6 @@ Our MVP is to allow users to grow a daisy and will also have a soothing soundtra
 # In the Future
 Beyond our MVP we would like to include a greater variety of plants in our shop feature, and allow for more factors to affect the plant (ex. fertilizer boosters, worms, natural disaster warnings, ect). We also want to be able to control the volume of the music within the app and thought about potentially having the actual weather of the users location be reflected in the app. For example, today it was raining in Saint Paul so ideally it would rain in the app so the flower would be automatically watered. Additionally, we would be interesting in adding an educational aspect to this game in which fun facts appear on the screen and teach the user gardening techniques. 
 
+# Attributions
+Flower images sourced from http://valeague.com/blog/2013/02/05/5-tips-grow-your-business/grow/
 
