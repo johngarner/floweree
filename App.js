@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
+import { Image, Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 
 export default class ButtonBasics extends Component {
   _onPressButton() {
@@ -7,10 +7,16 @@ export default class ButtonBasics extends Component {
   }
 
   render() {
+
     return (
       <View style={styles.container}>
 
+        <View style={styles.flowerContainer}>
+          <Image source={require('./assets/flowers/flower1.png')}/>
+        </View>
+        
         <View style={styles.buttonContainer1}>
+
           <Button
             onPress={this._onPressButton}
             title="1"
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
   container: {
    width: "100%",
    height: "100%",
-   backgroundColor: "grey",
+   backgroundColor: "white",
   },
   buttonContainer1: {
     marginTop: 30,
@@ -83,4 +89,9 @@ const styles = StyleSheet.create({
     backgroundColor: "purple",
     position: "absolute",
   },
+  flowerContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
 });
