@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Image, Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
+import { Image, Alert, AppRegistry, Button, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default class ButtonBasics extends Component {
   _onPressButton() {
-    Alert.alert('Alert')
+    Alert.alert('Clicky!')
   }
 
   render() {
@@ -14,36 +14,42 @@ export default class ButtonBasics extends Component {
         <View style={styles.flowerContainer}>
           <Image source={require('./assets/flowers/flower1.png')}/>
         </View>
-        
-        <View style={styles.buttonContainer1}>
 
-          <Button
-            onPress={this._onPressButton}
-            title="1"
-          />
+        <View style={styles.buttonContainer1}>
+          <TouchableOpacity onPress={this._onPressButton}>
+            <Image
+              source={require("./assets/buttons/watering_can.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.buttonContainer2}>
-          <Button
-            onPress={this._onPressButton}
-            title="2"
-            color="#841584"
-          />
+          <TouchableOpacity onPress={this._onPressButton}>
+            <Image
+              source={require("./assets/buttons/shop.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
+
         </View>
 
         <View style={styles.buttonContainer3}>
-          <Button
-            onPress={this._onPressButton}
-            title="3"
-          />
+          <TouchableOpacity onPress={this._onPressButton}>
+            <Image
+              source={require("./assets/buttons/info.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.buttonContainer4}>
-          <Button
-            onPress={this._onPressButton}
-            title="4"
-            color="#841584"
-          />
+          <TouchableOpacity onPress={this._onPressButton}>
+            <Image
+              source={require("./assets/buttons/book.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
         </View>
 
       </View>
@@ -57,36 +63,40 @@ const styles = StyleSheet.create({
    height: "100%",
    backgroundColor: "white",
   },
+  button: {
+      width: 50,
+      height: 50
+  },
   buttonContainer1: {
     marginTop: 30,
-    marginLeft: 30,
+    marginLeft: 20,
     left: 0,
     top: 0,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     position: "absolute",
   },
   buttonContainer2: {
     marginTop: 30,
-    marginRight: 30,
+    marginRight: 20,
     right: 0,
     top: 0,
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     position: "absolute",
   },
   buttonContainer3: {
     marginBottom: 30,
-    marginLeft: 30,
+    marginLeft: 20,
     left: 0,
     bottom: 0,
-    backgroundColor: "green",
+    // backgroundColor: "green",
     position: "absolute",
   },
   buttonContainer4: {
-    marginRight: 30,
     marginBottom: 30,
+    marginRight: 20,
     right: 0,
     bottom: 0,
-    backgroundColor: "purple",
+    // backgroundColor: "purple",
     position: "absolute",
   },
   flowerContainer: {
