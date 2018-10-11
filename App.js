@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+=======
+import { Image, Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
+>>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
 =======
 import { Image, Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 >>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
@@ -47,8 +51,12 @@ class GameScreen extends React.Component {
 
         <View style={styles.flowerContainer}>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Image source={require('./assets/flowers/flower1.png')}
           />
+=======
+          <Image source={require('./assets/flowers/flower1.png')}/>
+>>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
 =======
           <Image source={require('./assets/flowers/flower1.png')}/>
 >>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
@@ -196,8 +204,12 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 
    flowerContainer: {
+=======
+  flowerContainer: {
+>>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
 =======
   flowerContainer: {
 >>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
@@ -205,6 +217,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 });
@@ -239,6 +252,8 @@ const MyApp = createDrawerNavigator ({
 	Tools: {
 		screen: ToolsScreen,
 	},
+=======
+>>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
 =======
 >>>>>>> fbe42b28df7b017fe2cadffc1b7c272c57862004
 });
