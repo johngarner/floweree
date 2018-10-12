@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
-
 
 class HomeScreen extends React.Component {
 	static navigationOptions = {
@@ -36,7 +35,7 @@ class GameScreen extends React.Component {
   _onPressButton() {
     Alert.alert('Here is information on how you play the game')
   }
-  
+
   render() {
 
     return (
@@ -47,37 +46,41 @@ class GameScreen extends React.Component {
           />
 
         </View>
-        
-        <View style={styles.buttonContainer1}>
 
-          <Button
-            onPress= {() => this.props.navigation.navigate('Tools')}
-            //onPress= {() => this.props.navigation.navigate.openDrawer()}
-            title="Open Tools"
-          />
+        <View style={styles.buttonContainer1}>
+          <TouchableOpacity onPress= {() => this.props.navigation.navigate('Tools')}>
+            <Image
+              source={require("./assets/buttons/watering_can.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.buttonContainer2}>
-          <Button
-            onPress={() => this.props.navigation.navigate('Store')}
-            title="Store"
-            color="#841584"
-          />
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
+            <Image
+              source={require("./assets/buttons/shop.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.buttonContainer3}>
-          <Button
-            onPress={this._onPressButton}
-            title="Info"
-          />
+          <TouchableOpacity onPress={this._onPressButton}>
+            <Image
+              source={require("./assets/buttons/info.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.buttonContainer4}>
-          <Button
-            onPress= {() => this.props.navigation.navigate('Pictures')}
-            title="History"
-            color="#841584"
-          />
+          <TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
+            <Image
+              source={require("./assets/buttons/book.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
         </View>
 
       </View>
@@ -154,39 +157,44 @@ const styles = StyleSheet.create({
    backgroundColor: "white",
   },
 
+  button: {
+      width: 50,
+      height: 50
+  },
+
   buttonContainer1: {
     marginTop: 30,
-    marginLeft: 30,
+    marginLeft: 20,
     left: 0,
     top: 0,
-    backgroundColor: "red",
+    // backgroundColor: "red",
     position: "absolute",
   },
 
   buttonContainer2: {
     marginTop: 30,
-    marginRight: 30,
+    marginRight: 20,
     right: 0,
     top: 0,
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     position: "absolute",
   },
 
   buttonContainer3: {
     marginBottom: 30,
-    marginLeft: 30,
+    marginLeft: 20,
     left: 0,
     bottom: 0,
-    backgroundColor: "green",
+    // backgroundColor: "green",
     position: "absolute",
   },
 
   buttonContainer4: {
-    marginRight: 30,
     marginBottom: 30,
+    marginRight: 20,
     right: 0,
     bottom: 0,
-    backgroundColor: "purple",
+    // backgroundColor: "purple",
     position: "absolute",
   },
 
@@ -202,7 +210,7 @@ const RootStack = createStackNavigator(
   {
   	Home: {
 		screen: HomeScreen,
-	},
+		},
   	Game: {
   		screen: GameScreen,
   	},
@@ -216,6 +224,7 @@ const RootStack = createStackNavigator(
   		screen: PicturesScreen,
   	},
   },
+
   {
   	initialRouteName: 'Home',
   }
@@ -247,4 +256,3 @@ export default class App extends React.Component {
 // 		drawerWidth: 200
 // 	}
 // });
-
