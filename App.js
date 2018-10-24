@@ -61,12 +61,19 @@ class GameScreen extends React.Component {
       <View style={styles.container}>
 
         <View style={styles.flowerContainer}>
-          <Image source={images[imageCount]}
-          />
+          <Image source={images[imageCount] }/>
+
           // this.forceUpdate();
           // this.renderImage()
 
         </View>
+
+        <View style={styles.meterContainer}>
+	        <Image
+	              source={require("./assets/meters/orange.jpg")}
+	          />
+        </View>
+
 
         <View style={styles.buttonContainer1}>
           <TouchableOpacity onPress= {() => {
@@ -184,8 +191,8 @@ const styles = StyleSheet.create({
   },
 
   button: {
-      width: 50,
-      height: 50
+    width: 50,
+    height: 50
   },
 
   buttonContainer1: {
@@ -225,6 +232,14 @@ const styles = StyleSheet.create({
   },
 
   flowerContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  meterContainer: {
+    width: 5,
+    height: 1,
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
