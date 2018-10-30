@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
+var imageCount =0;
+const image1 = require('./assets/flowers/flower1.png')
+const image2 = require('./assets/flowers/flower2.png')
+const image3 = require('./assets/flowers/flower4.png')
+const image4 = require('./assets/flowers/flower5.png')
+const image5 = require('./assets/flowers/flower6.png')
+const image6 = require('./assets/flowers/flower7.png')
+const image7 = require('./assets/flowers/flower8.png')
+const images = [image1, image2, image3, image4, image5, image6, image7];
+
+
 class HomeScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Welcome Screen',
@@ -26,7 +37,7 @@ class GameScreen extends React.Component {
 		// title: 'Game Screen',
 		drawerIcon: ({ tintColor}) => (
 			<Image
-				source = {require('./assets/flowers/flower1.png')}
+				source = {images[imageCount]}
 				styles = {[styles.icon, {tintColor:tintColor}]}
 			/>
 		),
@@ -36,19 +47,41 @@ class GameScreen extends React.Component {
     Alert.alert('Here is information on how you play the game')
   }
 
+  // renderImage() {
+  //   var imgSource = images[imageCount];
+  //   return (
+  //     <Image source={imgSource}
+  //     />
+  //   );
+  // }
+
   render() {
 
     return (
       <View style={styles.container}>
 
         <View style={styles.flowerContainer}>
-          <Image source={require('./assets/flowers/flower1.png')}
-          />
+          <Image source={images[imageCount] }/>
+
+          // this.forceUpdate();
+          // this.renderImage()
 
         </View>
 
+        <View style={styles.meterContainer}>
+	        <Image
+	              source={require("./assets/meters/orange.jpg")}
+	          />
+        </View>
+
+
         <View style={styles.buttonContainer1}>
-          <TouchableOpacity onPress= {() => this.props.navigation.navigate('Tools')}>
+          <TouchableOpacity onPress= {() => {
+            if (imageCount < 6){
+              imageCount++;
+            }
+            this.forceUpdate();
+          }}>
             <Image
               source={require("./assets/buttons/watering_can.png")}
               style={styles.button}
@@ -88,33 +121,33 @@ class GameScreen extends React.Component {
   }
 }
 
-//just for color
 
-class ToolsScreen extends React.Component{
-	static navigationOptions = {
-		drawerLabel: 'Tools',
-		//title: 'Tools',
-		drawerIcon: ({tintColor}) => (
-			<Image
-				source = {require('./assets/flowers/flower1.png')}
-				styles = {[styles.icon, {tintColor:tintColor}]}
-			/>
-		),
-	};
-	render() {
-		return (
-			<Button
-				onPress= {() =>this.props.navigation.goBack()}
-				title= "Back to Game"
-			/>
-			// <Button
-			// 	onPress= {() => this.props.navigation.navigate.openDrawer()}
-			// 	title = "Open Tools"
-			// />
-		);
-	}
 
-}
+// class ToolsScreen extends React.Component{
+// 	static navigationOptions = {
+// 		drawerLabel: 'Tools',
+// 		//title: 'Tools',
+// 		drawerIcon: ({tintColor}) => (
+// 			<Image
+// 				source = {require('./assets/flowers/flower1.png')}
+// 				styles = {[styles.icon, {tintColor:tintColor}]}
+// 			/>
+// 		),
+// 	};
+// 	render() {
+// 		return (
+// 			<Button
+// 				onPress= {() =>this.props.navigation.goBack()}
+// 				title= "Back to Game"
+// 			/>
+// 			// <Button
+// 			// 	onPress= {() => this.props.navigation.navigate.openDrawer()}
+// 			// 	title = "Open Tools"
+// 			// />
+// 		);
+// 	}
+
+// }
 
 class StoreScreen extends React.Component {
 	static navigationOptions = {
@@ -158,8 +191,8 @@ const styles = StyleSheet.create({
   },
 
   button: {
-      width: 50,
-      height: 50
+    width: 50,
+    height: 50
   },
 
   buttonContainer1: {
@@ -201,6 +234,14 @@ const styles = StyleSheet.create({
   flowerContainer: {
     flex: 1,
     justifyContent: "center",
+    alignItems: "center",
+  },
+
+  meterContainer: {
+    width: 5,
+    height: 1,
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center"
   }
 
@@ -214,9 +255,9 @@ const RootStack = createStackNavigator(
   	Game: {
   		screen: GameScreen,
   	},
-  	Tools: {
-  		screen: ToolsScreen,
-  	},
+  	// Tools: {
+  	// 	screen: ToolsScreen,
+  	// },
   	Store: {
   		screen: StoreScreen,
   	},
@@ -230,14 +271,14 @@ const RootStack = createStackNavigator(
   }
 );
 
-const MyApp = createDrawerNavigator ({
-	Game: {
-		screen: GameScreen,
-	},
-	Tools: {
-		screen: ToolsScreen,
-	},
-});
+// const MyApp = createDrawerNavigator ({
+// 	Game: {
+// 		screen: GameScreen,
+// 	},
+// 	Tools: {
+// 		screen: ToolsScreen,
+// 	},
+// });
 
 export default class App extends React.Component {
 	render() {
