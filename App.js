@@ -22,15 +22,24 @@ const meters = [meter1, meter2, meter3, meter4];
 class HomeScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Welcome Screen',
+		headerStyle: {
+			backgroundColor: '#f4511e',
+		},
+		headerTintColor: '#fff',
 	};
 
   _onPressButton() {
   Alert.alert('Here is information on how you play the game')
 
 }
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Image
+        	source = {require('./assets/flowers/homescreenflower.png')}
+        	style= {{width: 100, height: 100}}
+        />
         <Button
           title= "Play Game"
           onPress={() => this.props.navigation.navigate('Game')}
@@ -38,7 +47,7 @@ class HomeScreen extends React.Component {
         <Button
             title= "How to Play"
             onPress={() => this._onPressButton()}
-            />
+        />
         </View>
     );
   }
