@@ -62,18 +62,14 @@ class GameScreen extends React.Component {
 
         <View style={styles.flowerContainer}>
           <Image source={images[imageCount] }/>
-
-          // this.forceUpdate();
-          // this.renderImage()
-
         </View>
 
         <View style={styles.meterContainer}>
 	        <Image
-	              source={require("./assets/meters/orange.jpg")}
-	          />
+						source={require("./assets/meters/yellow.jpg")}
+						style={styles.meter}
+					/>
         </View>
-
 
         <View style={styles.buttonContainer1}>
           <TouchableOpacity onPress= {() => {
@@ -200,7 +196,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     left: 0,
     top: 0,
-    // backgroundColor: "red",
     position: "absolute",
   },
 
@@ -209,7 +204,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     right: 0,
     top: 0,
-    // backgroundColor: "blue",
     position: "absolute",
   },
 
@@ -218,7 +212,6 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     left: 0,
     bottom: 0,
-    // backgroundColor: "green",
     position: "absolute",
   },
 
@@ -227,7 +220,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     right: 0,
     bottom: 0,
-    // backgroundColor: "purple",
     position: "absolute",
   },
 
@@ -237,12 +229,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+	meter: {
+		width: 30,
+		height: 70
+	},
+
   meterContainer: {
-    width: 5,
-    height: 1,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+		marginBottom: 200,
+    marginLeft: 30,
+    bottom: 0,
+    left: 0,
+    position: "absolute"
   }
 
 });
@@ -250,7 +247,7 @@ const styles = StyleSheet.create({
 const RootStack = createStackNavigator(
   {
   	Home: {
-		screen: HomeScreen,
+			screen: HomeScreen,
 		},
   	Game: {
   		screen: GameScreen,
