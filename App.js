@@ -24,6 +24,10 @@ class HomeScreen extends React.Component {
 		title: 'Welcome Screen',
 	};
 
+  _onPressButton() {
+  Alert.alert('Here is information on how you play the game')
+
+}
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -31,7 +35,11 @@ class HomeScreen extends React.Component {
           title= "Play Game"
           onPress={() => this.props.navigation.navigate('Game')}
         />
-      </View>
+        <Button
+            title= "How to Play"
+            onPress={() => this._onPressButton()}
+            />
+        </View>
     );
   }
 }
@@ -231,10 +239,12 @@ const styles = StyleSheet.create({
 	},
 
   meterContainer: {
-	  marginBottom: 200,
+	marginBottom: 350,
     marginLeft: 30,
     bottom: 0,
     left: 0,
+   	// justifyContent: "center",
+   	// alignItems: "center",
     position: "absolute"
   }
 
