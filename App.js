@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
-var imageCount =0;
-const image1 = require('./assets/flowers/flower1.png')
-const image2 = require('./assets/flowers/flower2.png')
-const image3 = require('./assets/flowers/flower4.png')
-const image4 = require('./assets/flowers/flower5.png')
-const image5 = require('./assets/flowers/flower6.png')
-const image6 = require('./assets/flowers/flower7.png')
-const image7 = require('./assets/flowers/flower8.png')
-const images = [image1, image2, image3, image4, image5, image6, image7];
+var flowerIndex = 0;
+const flower1 = require('./assets/flowers/flower1.png');
+const flower2 = require('./assets/flowers/flower2.png');
+const flower3 = require('./assets/flowers/flower4.png');
+const flower4 = require('./assets/flowers/flower5.png');
+const flower5 = require('./assets/flowers/flower6.png');
+const flower6 = require('./assets/flowers/flower7.png');
+const flower7 = require('./assets/flowers/flower8.png');
+const flowers = [flower1, flower2, flower3, flower4, flower5, flower6, flower7];
 
+var meterIndex = 0;
+const meter1 = require('./assets/meters/meter-01.png');
+const meter2 = require('./assets/meters/meter-02.png');
+const meter3 = require('./assets/meters/meter-03.png');
+const meter4 = require('./assets/meters/meter-04.png');
+const meters = [meter1, meter2, meter3, meter4];
 
 class HomeScreen extends React.Component {
 	static navigationOptions = {
@@ -37,7 +43,6 @@ class GameScreen extends React.Component {
 		// title: 'Game Screen',
 		drawerIcon: ({ tintColor}) => (
 			<Image
-				source = {images[imageCount]}
 				styles = {[styles.icon, {tintColor:tintColor}]}
 			/>
 		),
@@ -47,35 +52,26 @@ class GameScreen extends React.Component {
     Alert.alert('Here is information on how you play the game')
   }
 
-  // renderImage() {
-  //   var imgSource = images[imageCount];
-  //   return (
-  //     <Image source={imgSource}
-  //     />
-  //   );
-  // }
-
   render() {
 
     return (
       <View style={styles.container}>
 
         <View style={styles.flowerContainer}>
-          <Image source={images[imageCount] }/>
+          <Image source={flowers[flowerIndex]}/>
         </View>
 
         <View style={styles.meterContainer}>
 	        <Image
-						source={require("./assets/meters/yellow.jpg")}
+						source={meters[meterIndex]}
 						style={styles.meter}
 					/>
         </View>
 
         <View style={styles.buttonContainer1}>
           <TouchableOpacity onPress= {() => {
-            if (imageCount < 6){
-              imageCount++;
-            }
+            if (flowerIndex < 6) { flowerIndex++; }
+            if (meterIndex < 3) { meterIndex++; }
             this.forceUpdate();
           }}>
             <Image
@@ -177,13 +173,13 @@ class PicturesScreen extends React.Component {
 const styles = StyleSheet.create({
   icon: {
   	width:24,
-  	height: 24,
+  	height: 24
   },
 
   container: {
    width: "100%",
    height: "100%",
-   backgroundColor: "white",
+   backgroundColor: "white"
   },
 
   button: {
@@ -196,7 +192,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     left: 0,
     top: 0,
-    position: "absolute",
+    position: "absolute"
   },
 
   buttonContainer2: {
@@ -204,7 +200,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     right: 0,
     top: 0,
-    position: "absolute",
+    position: "absolute"
   },
 
   buttonContainer3: {
@@ -212,7 +208,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     left: 0,
     bottom: 0,
-    position: "absolute",
+    position: "absolute"
   },
 
   buttonContainer4: {
@@ -220,22 +216,22 @@ const styles = StyleSheet.create({
     marginRight: 20,
     right: 0,
     bottom: 0,
-    position: "absolute",
+    position: "absolute"
   },
 
   flowerContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
 
 	meter: {
 		width: 30,
-		height: 70
+		height: 200
 	},
 
   meterContainer: {
-		marginBottom: 200,
+	  marginBottom: 200,
     marginLeft: 30,
     bottom: 0,
     left: 0,
