@@ -57,6 +57,11 @@ class GameScreen extends React.Component {
     return (
       <View style={styles.container}>
 
+        <Image
+          source={require("./assets/backgrounds/mound.png")}
+          style={styles.background}
+        />
+
         <View style={styles.flowerContainer}>
           <Image source={flowers[flowerIndex]}/>
         </View>
@@ -236,7 +241,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: "absolute"
-  }
+  },
+
+  background: {
+    width: "100%",
+    height: "100%",
+  },
 
 });
 
