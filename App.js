@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 var flowerIndex = 0;
@@ -24,7 +24,7 @@ class HomeScreen extends React.Component {
 		headerStyle: {
 			backgroundColor: '#fad7a0',
 		},
-		headerTintColor: '#fad7a0',
+		headerTintColor: '#fff',
 	};
 
   _onPressButton() {
@@ -151,6 +151,8 @@ class GameScreen extends React.Component {
   }
 }
 
+//color comment (igonore)
+
 class StoreScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Store',
@@ -165,13 +167,12 @@ class StoreScreen extends React.Component {
   }
 }
 
-//color comment (igono)
 
 class PicturesScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Pictures',
 		headerStyle: {
-			backgroundColor: '#f4511e',
+			backgroundColor: '#97BAFD',
 		},
 		headerTintColor: '#fff',
 	};
@@ -182,8 +183,8 @@ class PicturesScreen extends React.Component {
 }
   render() {
     return (
-      <View style={{ width: "100%",
-   height: "100%" }}>
+    // <ScrollView>
+      <View style={{ width: "100%", height: "100%", backgroundColor: "#97BAFD" }}>
 
         if flowerIndex %= (flower3) {
         <Image
@@ -193,20 +194,18 @@ class PicturesScreen extends React.Component {
     }
     
         <View style={styles.buttonContainer3}>
-          <TouchableOpacity onPress={this._onPressButton}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Pictures')}>
             <Image
-              source={require("./assets/buttons/wateringCan.png")}
+              source={require("./assets/buttons/whitearrow2.png")}
               style={styles.button}
             />
           </TouchableOpacity>
         </View>
 
-
-
         <View style={styles.buttonContainer4}>
           <TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
             <Image
-              source={require("./assets/buttons/book.png")}
+              source={require("./assets/buttons/whitearrow.png")}
               style={styles.button}
             />
           </TouchableOpacity>
