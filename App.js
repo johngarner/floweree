@@ -8,6 +8,16 @@ const flower2 = require('./assets/flowers/new/flower2.png');
 const flower3 = require('./assets/flowers/new/flower3.png');
 const flowers = [flower1, flower2, flower3];
 
+var meterIndex = 0;
+const meter1 = require('./assets/meters/meter-01.png');
+const meter2 = require('./assets/meters/meter-02.png');
+const meter3 = require('./assets/meters/meter-03.png');
+const meter4 = require('./assets/meters/meter-04.png');
+const meters = [meter1, meter2, meter3, meter4];
+
+
+
+
 class HomeScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Welcome Screen',
@@ -80,6 +90,14 @@ class GameScreen extends React.Component {
           />
         </View>
 
+
+         <View style={styles.meterContainer}>
+          <Image
+              source={meters[meterIndex]}
+              style={styles.meter}
+          />
+        </View>
+
 				<View style={{flex: 0.795, flexDirection: 'column', justifyContent: "flex-end"}}>
 					<View style={{flexDirection: 'row', justifyContent: "center", paddingRight:"5%"}}>
 
@@ -87,6 +105,8 @@ class GameScreen extends React.Component {
 							// if (flowerIndex < flowers.length - 1) { flowerIndex++; }
 							flowerIndex++;
 							flowerIndex %= (flowers.length);
+							meterIndex++;
+							meterIndex %= (meters.length);
 							this.forceUpdate();
 						}}>
 							<Image
@@ -109,11 +129,18 @@ class GameScreen extends React.Component {
 					</View>
 				</View>
 
-				<View style={{flex: 0.205, alignItems: "center", justifyContent: "center"}}>
+				<View style={{flex: 0.205, flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
 					<TouchableOpacity onPress={this._onPressButton}>
 					  <Image
 					    source={require("./assets/buttons/info.png")}
 					    style={{width: 120, height: 120}}
+					  />
+					</TouchableOpacity>
+
+					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
+					  <Image
+					    source={require("./assets/buttons/shop.png")}
+					    style={{width: 90, height: 90}}
 					  />
 					</TouchableOpacity>
 				</View>
@@ -172,8 +199,23 @@ const styles = StyleSheet.create({
 		top: 0,
 		bottom: 0,
 		left: 0,
-		right: 0,
+		right: 0
 	},
+
+	meter: {
+		width: 30, 
+		height: 200
+
+	},
+
+	meterContainer: {
+		marginBottom:350,
+		marginLeft: 30,
+		bottom: 0,
+		left: 0,
+		position: "absolute"
+	},
+
 });
 
 const RootStack = createStackNavigator(
