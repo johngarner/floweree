@@ -22,9 +22,9 @@ class HomeScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Welcome Screen',
 		headerStyle: {
-			backgroundColor: '#f4511e',
+			backgroundColor: '#fad7a0',
 		},
-		headerTintColor: '#fff',
+		headerTintColor: '#fad7a0',
 	};
 
   _onPressButton() {
@@ -34,7 +34,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#fad7a0" }}>
         <Image
         	source = {require('./assets/flowers/homescreenflower.png')}
         	style= {{width: 100, height: 100}}
@@ -165,19 +165,79 @@ class StoreScreen extends React.Component {
   }
 }
 
+//color comment (igono)
+
 class PicturesScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Pictures',
+		headerStyle: {
+			backgroundColor: '#f4511e',
+		},
+		headerTintColor: '#fff',
 	};
 
+  _onPressButton() {
+  Alert.alert('Next Page')
+
+}
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>This will be a photoalbum... eventually</Text>
+      <View style={{ width: "100%",
+   height: "100%" }}>
+
+        if flowerIndex %= (flower3) {
+        <Image
+        	source = {require("./assets/flowers/new/flower3.png")}
+        	style= {{width: 100, height: 100}}
+        />
+    }
+    
+        <View style={styles.buttonContainer3}>
+          <TouchableOpacity onPress={this._onPressButton}>
+            <Image
+              source={require("./assets/buttons/wateringCan.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
+        </View>
+
+
+
+        <View style={styles.buttonContainer4}>
+          <TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
+            <Image
+              source={require("./assets/buttons/book.png")}
+              style={styles.button}
+            />
+          </TouchableOpacity>
+        </View>
+
       </View>
     );
   }
 }
+
+
+
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Image
+//         	source = {require('./assets/flowers/homescreenflower.png')}
+//         	style= {{width: 100, height: 100}}
+//         />
+//         <Button
+//           title= "Play Game"
+//           onPress={() => this.props.navigation.navigate('Game')}
+//         />
+//         <Button
+//             title= "How to Play"
+//             onPress={() => this._onPressButton()}
+//         />
+//         </View>
+//     );
+//   }
+// }
 
 
 const styles = StyleSheet.create({
@@ -201,6 +261,27 @@ const styles = StyleSheet.create({
 		left: 0,
 		right: 0
 	},
+
+	button: {
+    width: 50,
+    height: 50
+  },
+
+	buttonContainer3: {
+    marginBottom: 30,
+    marginLeft: 20,
+    left: 0,
+    bottom: 0,
+    position: "absolute"
+  },
+
+  buttonContainer4: {
+    marginBottom: 30,
+    marginRight: 20,
+    right: 0,
+    bottom: 0,
+    position: "absolute"
+  },
 
 	meter: {
 		width: 30, 
