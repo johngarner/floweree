@@ -22,7 +22,7 @@ class HomeScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Welcome Screen',
 		headerStyle: {
-			backgroundColor: '#fad7a0',
+			backgroundColor: '#FFCB8B',
 		},
 		headerTintColor: '#fff',
 	};
@@ -34,7 +34,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#fad7a0" }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#FFCB8B" }}>
         <Image
         	source = {require('./assets/flowers/homescreenflower.png')}
         	style= {{width: 100, height: 100}}
