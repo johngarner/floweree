@@ -119,7 +119,7 @@ class GameScreen extends React.Component {
 							this.forceUpdate();
 						}}>
 							<Image
-								source={require("./assets/buttons/wateringCan_bottom.png")}
+								source={require("./assets/buttons/wateringCan.png")}
 								style={styles.buttonBig}
 							/>
 						</TouchableOpacity>
@@ -130,7 +130,7 @@ class GameScreen extends React.Component {
 
 					  <TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
 					    <Image
-					      source={require("./assets/buttons/book_bottom.png")}
+					      source={require("./assets/buttons/book.png")}
 								style={styles.buttonBig}
 					    />
 					  </TouchableOpacity>
