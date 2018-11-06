@@ -76,20 +76,14 @@ class GameScreen extends React.Component {
     return (
 
       <View style={styles.container}>
-
-        <View style={styles.backgroundContainer}>
-          <Image
-              source={require("./assets/backgrounds/window.png")}
-              style={{width: "100%", height: "100%"}}
-          />
-        </View>
-
-        <View style={styles.flowerContainer}>
-          <Image
-              source={flowers[flowerIndex]}
-              style={{width: "100%", height: "100%"}}
-          />
-        </View>
+        {
+        // <View style={styles.flowerContainer}>
+        //   <Image
+        //       source={flowers[flowerIndex]}
+        //       style={{width: "100%", height: "100%"}}
+        //   />
+        // </View>
+        }
 
         <View style={styles.meterContainer}>
             <Image
@@ -99,6 +93,21 @@ class GameScreen extends React.Component {
         </View>
 
 				<View style={styles.topPart}>
+
+          <View style={styles.backgroundContainer}>
+            <Image
+                source={require("./assets/backgrounds/window_top.png")}
+                style={{width: "100%", height: "100%"}}
+            />
+          </View>
+
+          <View style={styles.flowerContainer}>
+            <Image
+                source={flowers[flowerIndex]}
+                style={{width: "100%", height: "100%"}}
+            />
+          </View>
+
 					<View style={styles.waterCanAndBookRow}>
 
 						<TouchableOpacity onPress= {() => {
@@ -110,19 +119,19 @@ class GameScreen extends React.Component {
 							this.forceUpdate();
 						}}>
 							<Image
-								source={require("./assets/buttons/wateringCan.png")}
-								style={{width: 120, height: 120}}
+								source={require("./assets/buttons/wateringCan_bottom.png")}
+								style={styles.buttonBig}
 							/>
 						</TouchableOpacity>
 
 						<View
-							style={{width: 50, height: 120}}
+							style={styles.buttonBig, {width: 50}}
 						/>
 
 					  <TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
 					    <Image
-					      source={require("./assets/buttons/book.png")}
-								style={{width: 120, height: 120}}
+					      source={require("./assets/buttons/book_bottom.png")}
+								style={styles.buttonBig}
 					    />
 					  </TouchableOpacity>
 
@@ -130,20 +139,31 @@ class GameScreen extends React.Component {
 				</View>
 
 				<View style={styles.bottomPart}>
-					<TouchableOpacity onPress={this._onPressButton}>
-					  <Image
-					    source={require("./assets/buttons/info.png")}
-					    style={{width: 120, height: 120}}
-					  />
-					</TouchableOpacity>
 
-					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
-					  <Image
-					    source={require("./assets/buttons/shop.png")}
-					    style={{width: 120, height: 120}}
-					  />
-					</TouchableOpacity>
-				</View>
+          <View style={styles.backgroundContainer}>
+            <Image
+                source={require("./assets/backgrounds/window_bottom.png")}
+                style={{width: "100%", height: 170}}
+            />
+          </View>
+
+          <View style={styles.infoAndStoreRow}>
+  					<TouchableOpacity onPress={this._onPressButton}>
+  					  <Image
+  					    source={require("./assets/buttons/info.png")}
+  					    style={styles.buttonBig}
+  					  />
+  					</TouchableOpacity>
+
+  					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
+  					  <Image
+  					    source={require("./assets/buttons/shop.png")}
+  					    style={styles.buttonBig}
+  					  />
+  					</TouchableOpacity>
+				  </View>
+
+        </View>
 
       </View>
 
@@ -292,17 +312,15 @@ const styles = StyleSheet.create({
 		position: "absolute",
 	},
 
-  topPart: {
-    flex: 0.8, 
-    flexDirection: 'column', 
-    justifyContent: "flex-end",
+  buttonBig: {
+    width: 110,
+    height: 110,
   },
 
-  bottomPart: {
-    flex: 0.2, 
-    flexDirection: "row", 
-    alignItems: "center", 
-    justifyContent: "center",
+  topPart: {
+    flex: 0.75, 
+    flexDirection: 'column', 
+    justifyContent: "flex-end",
   },
 
   waterCanAndBookRow: {
@@ -310,6 +328,17 @@ const styles = StyleSheet.create({
     justifyContent: "center", 
     paddingRight:"5%",
   },
+
+  bottomPart: {
+    flex: 0.25, 
+  },
+
+  infoAndStoreRow: {
+    paddingTop: "4%",
+    flexDirection: "row",
+    justifyContent: "center", 
+    alignItems: "center", 
+  }
 
 });
 
