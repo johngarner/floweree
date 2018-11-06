@@ -74,6 +74,7 @@ class GameScreen extends React.Component {
   render() {
 
     return (
+
       <View style={styles.container}>
 
         <View style={styles.backgroundContainer}>
@@ -90,16 +91,15 @@ class GameScreen extends React.Component {
           />
         </View>
 
-
-         <View style={styles.meterContainer}>
-          <Image
+        <View style={styles.meterContainer}>
+            <Image
               source={meters[meterIndex]}
               style={styles.meter}
-          />
+            />
         </View>
 
-				<View style={{flex: 0.795, flexDirection: 'column', justifyContent: "flex-end"}}>
-					<View style={{flexDirection: 'row', justifyContent: "center", paddingRight:"5%"}}>
+				<View style={styles.topPart}>
+					<View style={styles.waterCanAndBookRow}>
 
 						<TouchableOpacity onPress= {() => {
 							// if (flowerIndex < flowers.length - 1) { flowerIndex++; }
@@ -129,7 +129,7 @@ class GameScreen extends React.Component {
 					</View>
 				</View>
 
-				<View style={{flex: 0.205, flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+				<View style={styles.bottomPart}>
 					<TouchableOpacity onPress={this._onPressButton}>
 					  <Image
 					    source={require("./assets/buttons/info.png")}
@@ -140,7 +140,7 @@ class GameScreen extends React.Component {
 					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
 					  <Image
 					    source={require("./assets/buttons/shop.png")}
-					    style={{width: 90, height: 90}}
+					    style={{width: 120, height: 120}}
 					  />
 					</TouchableOpacity>
 				</View>
@@ -184,14 +184,12 @@ class PicturesScreen extends React.Component {
   render() {
     return (
     // <ScrollView>
-      <View style={{ width: "100%", height: "100%", backgroundColor: "#97BAFD" }}>
+      <View style={{ width: "100%", height: "100%", backgroundColor: "#97BAFD"}}>
 
-        if flowerIndex %= (flower3) {
         <Image
         	source = {require("./assets/flowers/new/flower3.png")}
         	style= {{width: 100, height: 100}}
         />
-    }
     
         <View style={styles.buttonContainer3}>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Pictures')}>
@@ -283,18 +281,35 @@ const styles = StyleSheet.create({
   },
 
 	meter: {
-		width: 30, 
-		height: 200
-
+		width: 65, 
+		height: 180,
 	},
 
 	meterContainer: {
-		marginBottom:350,
-		marginLeft: 30,
-		bottom: 0,
-		left: 0,
-		position: "absolute"
+		marginTop: "35%",
+		top: 0,
+    left: 0,
+		position: "absolute",
 	},
+
+  topPart: {
+    flex: 0.8, 
+    flexDirection: 'column', 
+    justifyContent: "flex-end",
+  },
+
+  bottomPart: {
+    flex: 0.2, 
+    flexDirection: "row", 
+    alignItems: "center", 
+    justifyContent: "center",
+  },
+
+  waterCanAndBookRow: {
+    flexDirection: 'row', 
+    justifyContent: "center", 
+    paddingRight:"5%",
+  }
 
 });
 
