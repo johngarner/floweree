@@ -281,8 +281,8 @@ const styles = StyleSheet.create({
   },
 
 	meter: {
-		width: 65, 
-		height: 180,
+		width: 70, 
+		height: 200,
 	},
 
 	meterContainer: {
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: "center", 
     paddingRight:"5%",
-  }
+  },
 
 });
 
