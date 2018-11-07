@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+// import Moment from 'react-moment';
+// import 'moment-timezone';
 
 var flowerIndex = 0;
 const flower1 = require('./assets/flowers/new/flower1.png');
@@ -84,6 +86,14 @@ class GameScreen extends React.Component {
         //   />
         // </View>
         }
+
+        // <Moment interval = {3000} >
+        //   1976-04-19T12:59-500
+        // </Moment>
+
+        // <View style={{alignItems: 'center'}}>
+        //   <Text>Time!</Text>
+        // </View>
 
         <View style={styles.meterContainer}>
             <Image
@@ -365,6 +375,6 @@ const RootStack = createStackNavigator(
 
 export default class App extends React.Component {
 	render() {
-		return <RootStack />;
+		return <RootStack/>;
 	}
 }
