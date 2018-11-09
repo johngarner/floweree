@@ -85,26 +85,26 @@ class GameScreen extends React.Component {
 		        // </View>
 				}
 
-        		<View style={styles.meterContainer}>
-            		<Image
-              			source={meters[meterIndex]}
-              			style={styles.meter}
-            		/>
-        		</View>
-
 				<View style={styles.topPart}>
 
 					<View style={styles.backgroundContainer}>
 						<Image
 						    source={require("./assets/backgrounds/window_top.png")}
-							style={{width: "100%", height: "100%"}}
+							style={{width: "100%", height: "100%", resizeMode: "contain"}}
 						/>
 		        	</View>
+
+		        	<View style={styles.meterContainer}>
+	            		<Image
+	              			source={meters[meterIndex]}
+	              			style={styles.meter}
+	            		/>
+	        		</View>
 
 					<View style={styles.flowerContainer}>
 						<Image
 							source={flowers[flowerIndex]}
-							style={{width: "100%", height: "100%"}}
+							style={{width: "100%", height: "100%", resizeMode: "contain"}}
 						/>
 		        	</View>
 
@@ -141,7 +141,7 @@ class GameScreen extends React.Component {
 	        		<View style={styles.backgroundContainer}>
 		            	<Image
 		                	source={require("./assets/backgrounds/window_bottom.png")}
-		                	style={{width: "100%", height: 170}}
+		                	style={{width: "100%", height: 175, resizeMode: "contain"}}
 		            	/>
 	          		</View>
 
@@ -257,6 +257,8 @@ class PicturesScreen extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 	  	flex: 1,
+	  	justifyContent: "center",
+	  	alignItems: "center",
 	  	backgroundColor: "#97BAFD"
 	},
 
@@ -273,7 +275,8 @@ const styles = StyleSheet.create({
 		top: 0,
 		bottom: 0,
 		left: 0,
-		right: 0
+		right: 0,
+		width: "100%", height: "100%",
 	},
 
 	button: {
@@ -303,10 +306,10 @@ const styles = StyleSheet.create({
 	},
 
 	meterContainer: {
-		marginTop: "35%",
-		top: 0,
-    	left: 0,
-		position: "absolute",
+		// marginTop: "35%",
+		// top: 0,
+		// left: 0,
+		// position: "absolute",
 	},
 
   	buttonBig: {
@@ -316,6 +319,7 @@ const styles = StyleSheet.create({
 
   	topPart: {
     	flex: 0.75,
+    	width: "100%",
     	flexDirection: 'column',
     	justifyContent: "flex-end",
   	},
@@ -328,10 +332,11 @@ const styles = StyleSheet.create({
 
   	bottomPart: {
     	flex: 0.25,
+    	width: "100%",
   	},
 
   	infoAndStoreRow: {
-    	paddingTop: "4%",
+    	paddingTop: "5%",
     	flexDirection: "row",
     	justifyContent: "center",
     	alignItems: "center",
