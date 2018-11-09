@@ -18,8 +18,6 @@ const meter4 = require('./assets/meters/meter-04.png');
 const meters = [meter1, meter2, meter3, meter4];
 
 
-
-
 class HomeScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Welcome Screen',
@@ -29,10 +27,9 @@ class HomeScreen extends React.Component {
 		headerTintColor: '#fff',
 	};
 
-  _onPressButton() {
-  Alert.alert('Here is information on how you play the game')
-
-}
+  	_onPressButton() {
+  		Alert.alert('Here is information on how you play the game')
+	}	
 
   render() {
     return (
@@ -69,57 +66,49 @@ class GameScreen extends React.Component {
 		),
 	};
 
-  _onPressButton() {
-    Alert.alert('Here is information on how you play the game')
-  }
+	_onPressButton() {
+    	Alert.alert('Here is information on how you play the game')
+	}
 
-  render() {
+	render() {
 
-    return (
+    	return (
 
-      <View style={styles.container}>
-        {
-        // <View style={styles.flowerContainer}>
-        //   <Image
-        //       source={flowers[flowerIndex]}
-        //       style={{width: "100%", height: "100%"}}
-        //   />
-        // </View>
-        }
+    		<View style={styles.container}>
+				{
+		        // <Moment interval = {3000} >
+		        //   1976-04-19T12:59-500
+		        // </Moment>
 
-        // <Moment interval = {3000} >
-        //   1976-04-19T12:59-500
-        // </Moment>
+		        // <View style={{alignItems: 'center'}}>
+		        //   <Text>Time!</Text>
+		        // </View>
+				}
 
-        // <View style={{alignItems: 'center'}}>
-        //   <Text>Time!</Text>
-        // </View>
-
-        <View style={styles.meterContainer}>
-            <Image
-              source={meters[meterIndex]}
-              style={styles.meter}
-            />
-        </View>
+        		<View style={styles.meterContainer}>
+            		<Image
+              			source={meters[meterIndex]}
+              			style={styles.meter}
+            		/>
+        		</View>
 
 				<View style={styles.topPart}>
 
-          <View style={styles.backgroundContainer}>
-            <Image
-                source={require("./assets/backgrounds/window_top.png")}
-                style={{width: "100%", height: "100%"}}
-            />
-          </View>
+					<View style={styles.backgroundContainer}>
+						<Image
+						    source={require("./assets/backgrounds/window_top.png")}
+							style={{width: "100%", height: "100%"}}
+						/>
+		        	</View>
 
-          <View style={styles.flowerContainer}>
-            <Image
-                source={flowers[flowerIndex]}
-                style={{width: "100%", height: "100%"}}
-            />
-          </View>
+					<View style={styles.flowerContainer}>
+						<Image
+							source={flowers[flowerIndex]}
+							style={{width: "100%", height: "100%"}}
+						/>
+		        	</View>
 
 					<View style={styles.waterCanAndBookRow}>
-
 						<TouchableOpacity onPress= {() => {
 							// if (flowerIndex < flowers.length - 1) { flowerIndex++; }
 							flowerIndex++;
@@ -138,44 +127,43 @@ class GameScreen extends React.Component {
 							style={styles.buttonBig, {width: 50}}
 						/>
 
-					  <TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
-					    <Image
-					      source={require("./assets/buttons/book.png")}
+						<TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
+							<Image
+								source={require("./assets/buttons/book.png")}
 								style={styles.buttonBig}
-					    />
-					  </TouchableOpacity>
-
+							/>
+						</TouchableOpacity>
 					</View>
 				</View>
 
 				<View style={styles.bottomPart}>
 
-          <View style={styles.backgroundContainer}>
-            <Image
-                source={require("./assets/backgrounds/window_bottom.png")}
-                style={{width: "100%", height: 170}}
-            />
-          </View>
+	        		<View style={styles.backgroundContainer}>
+		            	<Image
+		                	source={require("./assets/backgrounds/window_bottom.png")}
+		                	style={{width: "100%", height: 170}}
+		            	/>
+	          		</View>
 
-          <View style={styles.infoAndStoreRow}>
-  					<TouchableOpacity onPress={this._onPressButton}>
-  					  <Image
-  					    source={require("./assets/buttons/info.png")}
-  					    style={styles.buttonBig}
-  					  />
-  					</TouchableOpacity>
+          			<View style={styles.infoAndStoreRow}>
+			  			<TouchableOpacity onPress={this._onPressButton}>
+							<Image
+								source={require("./assets/buttons/info.png")}
+				  				style={styles.buttonBig}
+							/>
+	  					</TouchableOpacity>
 
-  					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
-  					  <Image
-  					    source={require("./assets/buttons/shop.png")}
-  					    style={styles.buttonBig}
-  					  />
-  					</TouchableOpacity>
-				  </View>
+	  					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
+	  					  <Image
+	  					    source={require("./assets/buttons/shop.png")}
+	  					    style={styles.buttonBig}
+	  					  />
+	  					</TouchableOpacity>
+					</View>
 
-        </View>
+        		</View>
 
-      </View>
+    		</View>
 
     );
   }
@@ -188,13 +176,13 @@ class StoreScreen extends React.Component {
 		title: 'Store',
 	};
 
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>This will be a store... eventually</Text>
-      </View>
-    );
-  }
+  	render() {
+    	return (
+      		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        		<Text>This will be a store... eventually</Text>
+      		</View>
+    	);
+  	}
 }
 
 
@@ -207,45 +195,43 @@ class PicturesScreen extends React.Component {
 		headerTintColor: '#fff',
 	};
 
-  _onPressButton() {
-  Alert.alert('Next Page')
+  	_onPressButton() {
+  		Alert.alert('Next Page')
 
-}
-  render() {
-    return (
-    // <ScrollView>
-      <View style={{ width: "100%", height: "100%", backgroundColor: "#97BAFD"}}>
+	}
+  	render() {
+    	return (
+    		// <ScrollView>
+      		<View style={{ width: "100%", height: "100%", backgroundColor: "#97BAFD"}}>
+	        	<Image
+	        		source = {require("./assets/flowers/new/flower3.png")}
+	        		style= {{width: 100, height: 100}}
+	        	/>
 
-        <Image
-        	source = {require("./assets/flowers/new/flower3.png")}
-        	style= {{width: 100, height: 100}}
-        />
-    
-        <View style={styles.buttonContainer3}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Pictures')}>
-            <Image
-              source={require("./assets/buttons/whitearrow2.png")}
-              style={styles.button}
-            />
-          </TouchableOpacity>
-        </View>
+	        	<View style={styles.buttonContainer3}>
+	        	  	<TouchableOpacity onPress={() => this.props.navigation.navigate('Pictures')}>
+	        	  	  	<Image
+	        	  	  	  	source={require("./assets/buttons/whitearrow2.png")}
+	        	  	  	  	style={styles.button}
+	        	  	  	/>
+	        	  	</TouchableOpacity>
+	        	</View>
 
-        <View style={styles.buttonContainer4}>
-          <TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
-            <Image
-              source={require("./assets/buttons/whitearrow.png")}
-              style={styles.button}
-            />
-          </TouchableOpacity>
-        </View>
-
-      </View>
+	        	<View style={styles.buttonContainer4}>
+		        	<TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
+		        		<Image
+		        			source={require("./assets/buttons/whitearrow.png")}
+		        			style={styles.button}
+		        	  	/>
+		        	</TouchableOpacity>
+	        	</View>
+      		</View>
     );
   }
 }
 
 
-
+{
 //   render() {
 //     return (
 //       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -265,13 +251,14 @@ class PicturesScreen extends React.Component {
 //     );
 //   }
 // }
+}
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#97BAFD"
-  },
+	container: {
+	  	flex: 1,
+	  	backgroundColor: "#97BAFD"
+	},
 
 	backgroundContainer: {
 		position: 'absolute',
@@ -290,65 +277,65 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-    width: 50,
-    height: 50
-  },
+	    width: 50,
+	    height: 50
+  	},
 
 	buttonContainer3: {
-    marginBottom: 30,
-    marginLeft: 20,
-    left: 0,
-    bottom: 0,
-    position: "absolute"
-  },
+	    marginBottom: 30,
+	    marginLeft: 20,
+	    left: 0,
+	    bottom: 0,
+	    position: "absolute"
+	},
 
-  buttonContainer4: {
-    marginBottom: 30,
-    marginRight: 20,
-    right: 0,
-    bottom: 0,
-    position: "absolute"
-  },
+  	buttonContainer4: {
+	    marginBottom: 30,
+	    marginRight: 20,
+	    right: 0,
+	    bottom: 0,
+	    position: "absolute"
+  	},
 
 	meter: {
-		width: 70, 
+		width: 70,
 		height: 200,
 	},
 
 	meterContainer: {
 		marginTop: "35%",
 		top: 0,
-    left: 0,
+    	left: 0,
 		position: "absolute",
 	},
 
-  buttonBig: {
-    width: 110,
-    height: 110,
-  },
+  	buttonBig: {
+    	width: 110,
+    	height: 110,
+  	},
 
-  topPart: {
-    flex: 0.75, 
-    flexDirection: 'column', 
-    justifyContent: "flex-end",
-  },
+  	topPart: {
+    	flex: 0.75,
+    	flexDirection: 'column',
+    	justifyContent: "flex-end",
+  	},
 
-  waterCanAndBookRow: {
-    flexDirection: 'row', 
-    justifyContent: "center", 
-    paddingRight:"5%",
-  },
+  	waterCanAndBookRow: {
+    	flexDirection: 'row',
+    	justifyContent: "center",
+    	paddingRight:"5%",
+  	},
 
-  bottomPart: {
-    flex: 0.25, 
-  },
+  	bottomPart: {
+    	flex: 0.25,
+  	},
 
-  infoAndStoreRow: {
-    paddingTop: "4%",
-    flexDirection: "row",
-    justifyContent: "center", 
-    alignItems: "center", 
-  }
+  	infoAndStoreRow: {
+    	paddingTop: "4%",
+    	flexDirection: "row",
+    	justifyContent: "center",
+    	alignItems: "center",
+  	}
 
 });
 
