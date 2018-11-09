@@ -4,6 +4,8 @@ import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 // import Moment from 'react-moment';
 // import 'moment-timezone';
 
+import Clock from "./Clock";
+
 var flowerIndex = 0;
 const flower1 = require('./assets/flowers/new/flower1.png');
 const flower2 = require('./assets/flowers/new/flower2.png');
@@ -180,6 +182,7 @@ class StoreScreen extends React.Component {
     	return (
       		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         		<Text>This will be a store... eventually</Text>
+        		<Clock/>
       		</View>
     	);
   	}
