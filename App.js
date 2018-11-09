@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
 	};
 
   	_onPressButton() {
-  		Alert.alert('Here is information on how you play the game')
+  		Alert.alert('Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.')
 	}	
 
   render() {
@@ -69,7 +69,7 @@ class GameScreen extends React.Component {
 	};
 
 	_onPressButton() {
-    	Alert.alert('Here is information on how you play the game')
+    	Alert.alert('Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.')
 	}
 
 	render() {
