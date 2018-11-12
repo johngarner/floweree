@@ -10,20 +10,26 @@ export class AlbumScreen extends React.Component {
 		},
 		headerTintColor: '#fff',
 	};
-
-  	_onPressButton() {
-  		Alert.alert('Next Page')
-
-	}
   	render() {
     	return (
-    		// <ScrollView>
-      		<View style={{ width: "100%", height: "100%", backgroundColor: "#97BAFD"}}>
-	        	<Image
-	        		source = {require("./assets/flowers/new/flower3.png")}
-	        		style= {{width: 100, height: 100}}
-	        	/>
-      		</View>
+    	 <ScrollView>
+        	<Image source = {require('./assets/flowers/homescreenflower.png')} />
+
+        	{
+        	// <Image source = {require('./assets/flowers/new/flower1.png', width: 64, height: 64)} />
+        	// <Image source = {require('./assets/flowers/new/flower2.png', width: 64, height: 64)} />
+        	// <Image source = {require('./assets/flowers/new/flower3.png', width: 64, height: 64)} />
+        	}
+
+        	<Image source = {require('./assets/flowers/flower1.png')} />
+        	<Image source = {require('./assets/flowers/flower2.png')} />
+        	<Image source = {require('./assets/flowers/flower3.png')} />
+        	<Image source = {require('./assets/flowers/flower4.png')} />
+        	<Image source = {require('./assets/flowers/flower5.png')} />
+        	<Image source = {require('./assets/flowers/flower6.png')} />
+        	<Image source = {require('./assets/flowers/flower7.png')} />
+
+      	</ScrollView>
     );
   }
 }
