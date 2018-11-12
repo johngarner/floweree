@@ -6,6 +6,14 @@ import React, {
   TextInput,
 } from 'react-native';
 
+
+//1 water every 24 hours. Next image shows up (aka flower grows). 
+//no such thing as over watering. 
+//no water in 24 hours. Plant image stays the same but meter decreases 1.
+//after 96 hours (4 days, for the 4 meters) generic dead flower image appears. 
+
+
+
 class Flower extends Component {
   constructor(props){
     super(props);
@@ -16,3 +24,6 @@ class Flower extends Component {
   }
   detect
 }
+
+
+
