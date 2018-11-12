@@ -6,7 +6,7 @@ export class User extends Component {
     
     this.state = {
       firstLogin: true,
-    };
+    }
   }
 }
 
