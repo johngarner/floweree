@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
+import Flower from "./Flower";
+
 var flowerIndex = 0;
 const flower1 = require('./assets/flowers/new/flower1.png');
 const flower2 = require('./assets/flowers/new/flower2.png');
@@ -138,12 +140,7 @@ export class GameScreen extends React.Component {
 	            		/>
 	        		</View>
 
-					<View style={styles.flowerContainer}>
-						<Image
-							source={flowers[flowerIndex]}
-							style={{width: "100%", height: "100%", resizeMode: "contain"}}
-						/>
-		        	</View>
+					<Flower/>
 
 					<View style={styles.waterCanAndBookRow}>
 						<TouchableOpacity onPress= {() => {
