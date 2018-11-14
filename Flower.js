@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+import {
+  View,
+  Image,
+  StyleSheet
+} from 'react-native';
+
 //1 water every 24 hours. Next image shows up (aka flower grows). 
 //no such thing as over watering. 
 //no water in 24 hours. Plant image stays the same but meter decreases 1.
@@ -31,8 +37,8 @@ export class Flower extends Component {
   constructor(props){
     super(props);
     this.state = {
-      water = '1',
-      growth = '1'
+      water: '1',
+      growth: '1',
     }
   }
 
@@ -41,11 +47,12 @@ export class Flower extends Component {
     return (
       <View style={styles.flowerContainer}>
         <Image
-          source={flowers[this.growth]}
+          source={flowers[this.state.growth]}
           style={{width: "100%", height: "100%", resizeMode: "contain"}}
         />
       </View>
     );
+
   }
 }
 
