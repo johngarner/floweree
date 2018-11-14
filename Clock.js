@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  StatusBar,
   StyleSheet,
   TouchableOpacity,
   AsyncStorage
@@ -59,38 +58,43 @@ export class Clock extends Component {
   }
 
   saveTimeData() {
-    let user = "Do Si Doe";
-    AsyncStorage.setItem("userName", user);
-  }
+    
+    let obj = {
+      time: moment().format("LTS"),
+      date: moment().format("LL"),
+    }
 
-  saveTimeData2() {
-    let user = "Doge";
-    AsyncStorage.setItem("userName2", user);
+    AsyncStorage.setItem("timeObj", JSON.stringify(obj));
   }
 
   displayTimeData = async () => {
+
     try {
-      let user = await AsyncStorage.getItem("userName");
-      let user2 = await AsyncStorage.getItem("userName2");
-      alert("user: " + user + "\n" + "user2: " + user2);
+      let obj = await AsyncStorage.getItem("timeObj");
+      let parsedObj = JSON.parse(obj);
+      alert("Time: " + parsedObj.time + "\n" +
+            "Date: " + parsedObj.date);
     }
+
     catch(error) {
       alert(error);
     }
   }
 
-  clearAllTimeData() {
-    AsyncStorage.clear();
+  clearAllTimeData = async () => {
+    try {
+      AsyncStorage.clear();
+    }
+
+    catch(error) {
+      alert(error);
+    }
   }
 
   render() {
 
     return (
       <View style={styles.container}>
-
-        {
-        // <StatusBar style={{backgroundColor: 'transparent'}} />
-        }
 
         <Text style={styles.timeText}>
           {this.state.time}
@@ -101,10 +105,6 @@ export class Clock extends Component {
 
         <TouchableOpacity onPress={this.saveTimeData} style={styles.button}>
           <Text style={{color: "blue"}}>Save Time Data</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.saveTimeData2} style={styles.button}>
-          <Text style={{color: "blue"}}>Save Time Data 2</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={this.displayTimeData} style={styles.button}>
