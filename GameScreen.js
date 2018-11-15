@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+
+import moment from "moment";
 
 import Flower from "./Flower";
 
 var flowerIndex = 0;
-const flower1 = require('./assets/flowers/new/flower1.png');
+const flower3 = require('./assets/flowers/new/flower1.png');
 const flower2 = require('./assets/flowers/new/flower2.png');
-const flower3 = require('./assets/flowers/new/flower3.png');
+const flower1 = require('./assets/flowers/new/flower3.png');
 const flowers = [flower1, flower2, flower3];
 
 var meterIndex = 0;
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
 });
 
 export class GameScreen extends React.Component {
+
 	static navigationOptions = {
 		drawerLabel: 'Game',
 		headerStyle: {
@@ -117,6 +120,69 @@ export class GameScreen extends React.Component {
 	_onPressButton() {
     	Alert.alert('Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.')
 	}
+
+	saveTimeData() {
+    
+	    let obj = {
+	      time: moment().format("LTS"),
+	      date: moment().format("LL"),
+	    }
+
+	    AsyncStorage.setItem("timeObj", JSON.stringify(obj));
+	  }
+
+	  displayTimeData = async () => {
+
+	    try {
+	      let obj = await AsyncStorage.getItem("timeObj");
+	      let parsedObj = JSON.parse(obj);
+	      alert("Time: " + parsedObj.time + "\n" +
+	            "Date: " + parsedObj.date);
+	    }
+
+	    catch(error) {
+	      alert(error);
+	    }
+	 }
+
+	 updateMeter(){
+	 	meterIndex++;
+	 	if (meterIndex > meters.length-1) {
+	 		meterIndex = meters.length-1;
+	 	}
+		// meterIndex %= (meters.length);
+		this.forceUpdate();
+	 }
+
+	  updateFlower(){
+	 	flowerIndex++;
+	 	if (flowerIndex > flowers.length-1) {
+	 		flowerIndex = flowers.length-1;
+	 	}
+		// meterIndex %= (meters.length);
+		this.forceUpdate();
+	 }
+
+	 checkTime = async () => {
+
+	 	try {
+	      	let obj = await AsyncStorage.getItem("timeObj");
+		    let parsedObj = JSON.parse(obj);
+		    // if (moment().format("LTS") - parsedObj.time >= 24 hours) {
+
+		    alert(parsedObj.time.clone().add(24, "hours").format());
+		    
+		    if(){
+
+		    	// this.updateFlower();
+		    }
+	    }
+
+	    catch(error) {
+	       alert(error);
+	    }
+	 }
+
 
 	render() {
 
@@ -140,22 +206,46 @@ export class GameScreen extends React.Component {
 	            		/>
 	        		</View>
 
-					<Flower/>
+
+					<View style={styles.flowerContainer}>
+        				<Image
+          					source={flowers[flowerIndex]}
+          					style={{width: "100%", height: "100%", resizeMode: "contain"}}
+        				/>
+     				 </View>
 
 					<View style={styles.waterCanAndBookRow}>
+					{
+						// <TouchableOpacity onPress= {() => {
+						// 	// if (flowerIndex < flowers.length - 1) { flowerIndex++; }
+
+						// 	flowerIndex++;
+						// 	flowerIndex %= (flowers.length);
+						// 	meterIndex++;
+						// 	meterIndex %= (meters.length);
+						// 	this.forceUpdate();
+						// }}>
+						// 	<Image
+						// 		source={require("./assets/buttons/wateringCan.png")}
+						// 		style={styles.buttonBig}
+						// 	/>
+						// </TouchableOpacity>
+					}
+
 						<TouchableOpacity onPress= {() => {
-							// if (flowerIndex < flowers.length - 1) { flowerIndex++; }
-							flowerIndex++;
-							flowerIndex %= (flowers.length);
-							meterIndex++;
-							meterIndex %= (meters.length);
-							this.forceUpdate();
-						}}>
+							this.saveTimeData();
+							this.updateMeter();
+							this.checkTime();
+							// this.updateFlower();
+						}}
+						>
 							<Image
 								source={require("./assets/buttons/wateringCan.png")}
 								style={styles.buttonBig}
+
 							/>
 						</TouchableOpacity>
+
 
 						<View
 							style={styles.buttonBig, {width: 50}}
