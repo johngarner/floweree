@@ -177,7 +177,7 @@ export class GameScreen extends React.Component {
 
 		    // alert("saved time: " + savedTimeFormatted + "\n" +
 		    // 		"current time: " + currentTimeFormatted + "\n" +
-		    // 		"elapsed: " + elapsedSeconds + " seconds");
+		    // 		"elapsed: " + elapsedMilliseconds + " milliseconds");
 		    
 		    if (elapsedMilliseconds >= 5000){
 		    	this.updateFlower();
@@ -208,7 +208,7 @@ export class GameScreen extends React.Component {
 					<View style={styles.backgroundContainer}>
 						<Image
 						    source={require("./assets/backgrounds/window_top.png")}
-							style={{width: "100%", height: "100%", resizeMode: "contain"}}
+							style={{width: "100%", height: "100%", resizeMode: "cover"}}
 						/>
 		        	</View>
 
@@ -223,13 +223,14 @@ export class GameScreen extends React.Component {
 					<View style={styles.flowerContainer}>
         				<Image
           					source={flowers[flowerIndex]}
-          					style={{width: "100%", height: "100%", resizeMode: "contain"}}
+          					style={{width: "100%", height: "100%", resizeMode: "cover"}}
         				/>
      				 </View>
 
 					<View style={styles.waterCanAndBookRow}>
 
 						<TouchableOpacity onPress= {() => {
+							// this.checkTime();
 							this.saveTimeData();
 							this.updateMeter();
 						}}>
@@ -259,7 +260,7 @@ export class GameScreen extends React.Component {
 	        		<View style={styles.backgroundContainer}>
 		            	<Image
 		                	source={require("./assets/backgrounds/window_bottom.png")}
-		                	style={{width: "100%", height: 175, resizeMode: "contain"}}
+		                	style={{width: "100%", height: 175, resizeMode: "cover"}}
 		            	/>
 	          		</View>
 
