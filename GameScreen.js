@@ -21,10 +21,10 @@ const meters = [meter1, meter2, meter3, meter4];
 
 const styles = StyleSheet.create({
 	container: {
-  	flex: 1,
-  	justifyContent: "center",
-  	alignItems: "center",
-  	backgroundColor: "#97BAFD"
+	  	flex: 1,
+	  	justifyContent: "center",
+	  	alignItems: "center",
+	  	backgroundColor: "#97BAFD"
 	},
 
 	backgroundContainer: {
@@ -45,24 +45,24 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-    width: 50,
-    height: 50
+	    width: 50,
+	    height: 50
   	},
 
 	buttonContainer3: {
-    marginBottom: 30,
-    marginLeft: 20,
-    left: 0,
-    bottom: 0,
-    position: "absolute"
+	    marginBottom: 30,
+	    marginLeft: 20,
+	    left: 0,
+	    bottom: 0,
+	    position: "absolute"
 	},
 
 	buttonContainer4: {
-    marginBottom: 30,
-    marginRight: 20,
-    right: 0,
-    bottom: 0,
-    position: "absolute"
+	    marginBottom: 30,
+	    marginRight: 20,
+	    right: 0,
+	    bottom: 0,
+	    position: "absolute"
 	},
 
 	meter: {
@@ -71,33 +71,33 @@ const styles = StyleSheet.create({
 	},
 
 	buttonBig: {
-  	width: 110,
-  	height: 110,
+	  	width: 110,
+	  	height: 110,
 	},
 
 	topPart: {
-  	flex: 0.75,
-  	width: "100%",
-  	flexDirection: 'column',
-  	justifyContent: "flex-end",
+	  	flex: 0.75,
+	  	width: "100%",
+	  	flexDirection: 'column',
+	  	justifyContent: "flex-end",
 	},
 
 	waterCanAndBookRow: {
-  	flexDirection: 'row',
-  	justifyContent: "center",
-  	paddingRight:"5%",
+	  	flexDirection: 'row',
+	  	justifyContent: "center",
+	  	paddingRight:"5%",
 	},
 
 	bottomPart: {
-  	flex: 0.25,
-  	width: "100%",
+	  	flex: 0.25,
+	  	width: "100%",
 	},
 
 	infoAndStoreRow: {
-  	paddingTop: "5%",
-  	flexDirection: "row",
-  	justifyContent: "center",
-  	alignItems: "center",
+	  	paddingTop: "5%",
+	  	flexDirection: "row",
+	  	justifyContent: "center",
+	  	alignItems: "center",
 	}
 
 });
@@ -117,71 +117,84 @@ export class GameScreen extends React.Component {
 		),
 	};
 
-	_onPressButton() {
-    	Alert.alert('Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.')
+	infoButton() {
+    	Alert.alert('How to play', 'Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.');
 	}
 
 	saveTimeData() {
     
-	    let obj = {
-	      time: moment().format("LTS"),
-	      date: moment().format("LL"),
+	    let timeObj = {
+	      time: moment(),
+	      timeFormatted: moment().format("hh:mm:ss A"),
 	    }
 
-	    AsyncStorage.setItem("timeObj", JSON.stringify(obj));
-	  }
+	    AsyncStorage.setItem("timeObj", JSON.stringify(timeObj));
+	}
 
-	  displayTimeData = async () => {
+	displayTimeData = async () => {
 
 	    try {
-	      let obj = await AsyncStorage.getItem("timeObj");
-	      let parsedObj = JSON.parse(obj);
-	      alert("Time: " + parsedObj.time + "\n" +
-	            "Date: " + parsedObj.date);
+	      let timeObj = await AsyncStorage.getItem("timeObj");
+	      let parsedTimeObj = JSON.parse(timeObj);
+	      alert("Time: " + parsedTimeObj.timeFormatted);
 	    }
 
 	    catch(error) {
 	      alert(error);
 	    }
-	 }
+	}
 
-	 updateMeter(){
+	updateMeter() {
 	 	meterIndex++;
 	 	if (meterIndex > meters.length-1) {
 	 		meterIndex = meters.length-1;
 	 	}
-		// meterIndex %= (meters.length);
 		this.forceUpdate();
 	 }
 
-	  updateFlower(){
+	updateFlower() {
 	 	flowerIndex++;
 	 	if (flowerIndex > flowers.length-1) {
-	 		flowerIndex = flowers.length-1;
+	 		// flowerIndex = flowers.length-1;
+	 		flowerIndex = 0;
 	 	}
-		// meterIndex %= (meters.length);
 		this.forceUpdate();
 	 }
 
-	 checkTime = async () => {
+	checkTime = async () => {
 
 	 	try {
-	      	let obj = await AsyncStorage.getItem("timeObj");
-		    let parsedObj = JSON.parse(obj);
-		    // if (moment().format("LTS") - parsedObj.time >= 24 hours) {
+	      	let timeObj = await AsyncStorage.getItem("timeObj");
+	      	let parsedTimeObj = JSON.parse(timeObj);
 
-		    alert(parsedObj.time.clone().add(24, "hours").format());
+		    let savedTime = parsedTimeObj.time;
+		    let savedTimeFormatted = parsedTimeObj.timeFormatted;
+
+		    let currentTime = moment();
+		    let currentTimeFormatted = moment().format("hh:mm:ss A");
+
+		    let elapsedMilliseconds = currentTime.diff(savedTime);
+
+		    // alert("saved time: " + savedTimeFormatted + "\n" +
+		    // 		"current time: " + currentTimeFormatted + "\n" +
+		    // 		"elapsed: " + elapsedSeconds + " seconds");
 		    
-		    if(){
-
-		    	// this.updateFlower();
+		    if (elapsedMilliseconds >= 5000){
+		    	this.updateFlower();
 		    }
 	    }
 
 	    catch(error) {
 	       alert(error);
 	    }
-	 }
+	}
+
+	componentDidMount() {
+	    setInterval(() => {
+			this.checkTime();
+			this.saveTimeData();
+	    }, 5000);
+	}
 
 
 	render() {
@@ -215,30 +228,11 @@ export class GameScreen extends React.Component {
      				 </View>
 
 					<View style={styles.waterCanAndBookRow}>
-					{
-						// <TouchableOpacity onPress= {() => {
-						// 	// if (flowerIndex < flowers.length - 1) { flowerIndex++; }
-
-						// 	flowerIndex++;
-						// 	flowerIndex %= (flowers.length);
-						// 	meterIndex++;
-						// 	meterIndex %= (meters.length);
-						// 	this.forceUpdate();
-						// }}>
-						// 	<Image
-						// 		source={require("./assets/buttons/wateringCan.png")}
-						// 		style={styles.buttonBig}
-						// 	/>
-						// </TouchableOpacity>
-					}
 
 						<TouchableOpacity onPress= {() => {
 							this.saveTimeData();
 							this.updateMeter();
-							this.checkTime();
-							// this.updateFlower();
-						}}
-						>
+						}}>
 							<Image
 								source={require("./assets/buttons/wateringCan.png")}
 								style={styles.buttonBig}
@@ -270,7 +264,7 @@ export class GameScreen extends React.Component {
 	          		</View>
 
           			<View style={styles.infoAndStoreRow}>
-			  			<TouchableOpacity onPress={this._onPressButton}>
+			  			<TouchableOpacity onPress={this.infoButton}>
 							<Image
 								source={require("./assets/buttons/info.png")}
 				  				style={styles.buttonBig}
