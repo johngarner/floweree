@@ -7,10 +7,16 @@ import moment from "moment";
 import Flower from "./Flower";
 
 var flowerIndex = 0;
-const flower3 = require('./assets/flowers/new/flower1.png');
-const flower2 = require('./assets/flowers/new/flower2.png');
-const flower1 = require('./assets/flowers/new/flower3.png');
-const flowers = [flower1, flower2, flower3];
+const flower1 = require('./assets/flowers/new/flower-01.png');
+const flower2 = require('./assets/flowers/new/flower-02.png');
+const flower3 = require('./assets/flowers/new/flower-03.png');
+const flower4 = require('./assets/flowers/new/flower-04.png');
+const flower5 = require('./assets/flowers/new/flower-05.png');
+const flower6 = require('./assets/flowers/new/flower-06.png');
+const flower7 = require('./assets/flowers/new/flower-07.png');
+const flower8 = require('./assets/flowers/new/flower-08.png');
+const flower9 = require('./assets/flowers/new/flower-09.png');
+const flowers = [flower1, flower2, flower3, flower4, flower5, flower6, flower7, flower8, flower9];
 
 var meterIndex = 0;
 const meter1 = require('./assets/meters/meter-01.png');
@@ -122,26 +128,12 @@ export class GameScreen extends React.Component {
 	}
 
 	saveTimeData() {
-    
 	    let timeObj = {
 	      time: moment(),
 	      timeFormatted: moment().format("hh:mm:ss A"),
 	    }
 
 	    AsyncStorage.setItem("timeObj", JSON.stringify(timeObj));
-	}
-
-	displayTimeData = async () => {
-
-	    try {
-	      let timeObj = await AsyncStorage.getItem("timeObj");
-	      let parsedTimeObj = JSON.parse(timeObj);
-	      alert("Time: " + parsedTimeObj.timeFormatted);
-	    }
-
-	    catch(error) {
-	      alert(error);
-	    }
 	}
 
 	updateMeter() {
@@ -162,7 +154,6 @@ export class GameScreen extends React.Component {
 	 }
 
 	checkTime = async () => {
-
 	 	try {
 	      	let timeObj = await AsyncStorage.getItem("timeObj");
 	      	let parsedTimeObj = JSON.parse(timeObj);
@@ -195,7 +186,6 @@ export class GameScreen extends React.Component {
 			this.saveTimeData();
 	    }, 5000);
 	}
-
 
 	render() {
 
