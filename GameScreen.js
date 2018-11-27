@@ -147,9 +147,11 @@ export class GameScreen extends React.Component {
 	updateFlower() {
 	 	flowerIndex++;
 	 	if (flowerIndex > flowers.length-1) {
-	 		// flowerIndex = flowers.length-1;
-	 		flowerIndex = 0;
+	 		flowerIndex = flowers.length-1;
 	 	}
+
+	 	AsyncStorage.setItem("flowerState", JSON.stringify(flowerIndex));
+
 		this.forceUpdate();
 	 }
 
@@ -158,21 +160,28 @@ export class GameScreen extends React.Component {
 	      	let timeObj = await AsyncStorage.getItem("timeObj");
 	      	let parsedTimeObj = JSON.parse(timeObj);
 
-		    let savedTime = parsedTimeObj.time;
-		    let savedTimeFormatted = parsedTimeObj.timeFormatted;
+	      	if (parsedTimeObj != null) {
+	      		let savedTime = parsedTimeObj.time;
+			    let savedTimeFormatted = parsedTimeObj.timeFormatted;
 
-		    let currentTime = moment();
-		    let currentTimeFormatted = moment().format("hh:mm:ss A");
+			    let currentTime = moment();
+			    let currentTimeFormatted = moment().format("hh:mm:ss A");
 
-		    let elapsedMilliseconds = currentTime.diff(savedTime);
+			    let elapsedMilliseconds = currentTime.diff(savedTime);
 
-		    // alert("saved time: " + savedTimeFormatted + "\n" +
-		    // 		"current time: " + currentTimeFormatted + "\n" +
-		    // 		"elapsed: " + elapsedMilliseconds + " milliseconds");
+			    // alert("saved time: " + savedTimeFormatted + "\n" +
+			    // 		"current time: " + currentTimeFormatted + "\n" +
+			    // 		"elapsed: " + elapsedMilliseconds + " milliseconds");
+			    
+			    if (elapsedMilliseconds >= 5000){
+			    	this.updateFlower();
+			    	this.saveTimeData();
+			    }	
+	      	} 
+	      	else {
+	      		this.saveTimeData();
+	      	}
 		    
-		    if (elapsedMilliseconds >= 5000){
-		    	this.updateFlower();
-		    }
 	    }
 
 	    catch(error) {
@@ -180,11 +189,23 @@ export class GameScreen extends React.Component {
 	    }
 	}
 
+	getFlowerState = async () => {
+		try {
+			let flowerState = JSON.parse(await AsyncStorage.getItem("flowerState"));
+
+			if (flowerState != null) {
+				flowerIndex = flowerState;
+				this.forceUpdate();
+			}
+		}
+
+		catch(error) {
+			alert(error);
+		}
+	}
+
 	componentDidMount() {
-	    setInterval(() => {
-			this.checkTime();
-			this.saveTimeData();
-	    }, 5000);
+		this.getFlowerState();
 	}
 
 	render() {
@@ -220,8 +241,7 @@ export class GameScreen extends React.Component {
 					<View style={styles.waterCanAndBookRow}>
 
 						<TouchableOpacity onPress= {() => {
-							// this.checkTime();
-							this.saveTimeData();
+							this.checkTime();
 							this.updateMeter();
 						}}>
 							<Image
