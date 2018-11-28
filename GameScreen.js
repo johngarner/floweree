@@ -6,6 +6,7 @@ import moment from "moment";
 
 import Flower from "./Flower";
 
+var pollenPoints = 0;
 var flowerIndex = 0;
 const flower1 = require('./assets/flowers/new/flower-01.png');
 const flower2 = require('./assets/flowers/new/flower-02.png');
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
 	meter: {
 		width: 70,
 		height: 200,
+		//borderColor: "red", borderWidth: 5,
 	},
 
 	buttonBig: {
@@ -104,11 +106,30 @@ const styles = StyleSheet.create({
 	  	flexDirection: "row",
 	  	justifyContent: "center",
 	  	alignItems: "center",
-	}
+	},
+
+	pointsText: {
+		color: '#ffffff',
+	    fontSize: 25,
+	},
+	
+	points: {
+		marginTop: 20,
+		top: 0,
+	    position: "absolute",
+		width: "100%",
+		alignItems: "center",
+	},
 
 });
 
 export class GameScreen extends React.Component {
+	constructor() {
+		super()
+		this.state = {
+			pollenPointsText: 0
+		}
+	}
 
 	static navigationOptions = {
 		drawerLabel: 'Game',
@@ -136,6 +157,15 @@ export class GameScreen extends React.Component {
 	    AsyncStorage.setItem("timeObj", JSON.stringify(timeObj));
 	}
 
+	updatePollenPoints(){
+		if (flowerIndex == 7) {
+		 //alert("Increase Pollen Points");
+		 // pollenPoints += 5;
+		 this.setState({pollenPointsText: this.state.pollenPointsText + 10});
+
+		}
+	}
+
 	updateMeter() {
 	 	meterIndex++;
 	 	if (meterIndex > meters.length-1) {
@@ -153,6 +183,8 @@ export class GameScreen extends React.Component {
 	 	AsyncStorage.setItem("flowerState", JSON.stringify(flowerIndex));
 
 		this.forceUpdate();
+
+		this.updatePollenPoints();
 	 }
 
 	checkTime = async () => {
@@ -222,6 +254,13 @@ export class GameScreen extends React.Component {
 							style={{width: "100%", height: "100%", resizeMode: "cover"}}
 						/>
 		        	</View>
+
+		        	<View style= {styles.points} >
+
+	            		<Text style = {styles.pointsText} >Pollen Points: {this.state.pollenPointsText}</Text>
+
+	        		</View>
+
 
 		        	<View style={styles.meterContainer}>
 	            		<Image

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
+import GameScreen from "./GameScreen";
+
 export class AlbumScreen extends React.Component {
 	static navigationOptions = {
 		title: 'Pictures',
@@ -15,13 +17,9 @@ export class AlbumScreen extends React.Component {
     	 <ScrollView>
         	<Image source = {require('./assets/flowers/homescreenflower.png')} />
 
-        	{
-        	// <Image source = {require('./assets/flowers/new/flower1.png', width: 64, height: 64)} />
-        	// <Image source = {require('./assets/flowers/new/flower2.png', width: 64, height: 64)} />
-        	// <Image source = {require('./assets/flowers/new/flower3.png', width: 64, height: 64)} />
-        	}
+        	//if fullyGrown = true then display image.
 
-        	<Image source = {require('./assets/flowers/flower1.png')} />
+        	<Image source = {require('./assets/flowers/new/flower1.png')} />
         	<Image source = {require('./assets/flowers/flower2.png')} />
         	<Image source = {require('./assets/flowers/flower3.png')} />
         	<Image source = {require('./assets/flowers/flower4.png')} />
