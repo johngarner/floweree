@@ -7,6 +7,7 @@ import moment from "moment";
 import Flower from "./Flower";
 
 var pollenPoints = 0;
+
 var flowerIndex = 0;
 const flower1 = require('./assets/flowers/new/flower-01.png');
 const flower2 = require('./assets/flowers/new/flower-02.png');
@@ -124,13 +125,6 @@ const styles = StyleSheet.create({
 });
 
 export class GameScreen extends React.Component {
-	constructor() {
-		super()
-		this.state = {
-			pollenPointsText: 0
-		}
-	}
-
 	static navigationOptions = {
 		drawerLabel: 'Game',
 		headerStyle: {
@@ -157,34 +151,12 @@ export class GameScreen extends React.Component {
 	    AsyncStorage.setItem("timeObj", JSON.stringify(timeObj));
 	}
 
-	updatePollenPoints(){
-		if (flowerIndex == 7) {
-		 //alert("Increase Pollen Points");
-		 // pollenPoints += 5;
-		 this.setState({pollenPointsText: this.state.pollenPointsText + 10});
-
-		}
-	}
-
 	updateMeter() {
 	 	meterIndex++;
 	 	if (meterIndex > meters.length-1) {
 	 		meterIndex = meters.length-1;
 	 	}
 		this.forceUpdate();
-	 }
-
-	updateFlower() {
-	 	flowerIndex++;
-	 	if (flowerIndex > flowers.length-1) {
-	 		flowerIndex = flowers.length-1;
-	 	}
-
-	 	AsyncStorage.setItem("flowerState", JSON.stringify(flowerIndex));
-
-		this.forceUpdate();
-
-		this.updatePollenPoints();
 	 }
 
 	checkTime = async () => {
@@ -221,6 +193,19 @@ export class GameScreen extends React.Component {
 	    }
 	}
 
+	updateFlower() {
+	 	flowerIndex++;
+	 	if (flowerIndex > flowers.length-1) {
+	 		flowerIndex = flowers.length-1;
+	 	}
+
+	 	AsyncStorage.setItem("flowerState", JSON.stringify(flowerIndex));
+
+		this.forceUpdate();
+
+		this.updatePollenPoints();
+	}
+
 	getFlowerState = async () => {
 		try {
 			let flowerState = JSON.parse(await AsyncStorage.getItem("flowerState"));
@@ -236,8 +221,32 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+	updatePollenPoints(){
+		if (flowerIndex % 2 == 0) {
+			pollenPoints += 10;
+		}
+
+		AsyncStorage.setItem("pollenPoints", JSON.stringify(pollenPoints));
+	}
+
+	getPollenPoints = async () => {
+		try {
+			let savedPollenPoints = JSON.parse(await AsyncStorage.getItem("pollenPoints"));
+
+			if (savedPollenPoints != null) {
+				pollenPoints = savedPollenPoints;
+				this.forceUpdate();
+			}
+		}
+
+		catch(error) {
+			alert(error);
+		}
+	}
+
 	componentDidMount() {
 		this.getFlowerState();
+		this.getPollenPoints();
 	}
 
 	render() {
@@ -257,7 +266,7 @@ export class GameScreen extends React.Component {
 
 		        	<View style= {styles.points} >
 
-	            		<Text style = {styles.pointsText} >Pollen Points: {this.state.pollenPointsText}</Text>
+	            		<Text style = {styles.pointsText} >Pollen Points: {pollenPoints}</Text>
 
 	        		</View>
 
