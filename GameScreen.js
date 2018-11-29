@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView, AsyncStorage} from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import moment from "moment";
@@ -24,8 +24,7 @@ var meterIndex = 0;
 const meter1 = require('./assets/meters/meter-01.png');
 const meter2 = require('./assets/meters/meter-02.png');
 const meter3 = require('./assets/meters/meter-03.png');
-const meter4 = require('./assets/meters/meter-04.png');
-const meters = [meter1, meter2, meter3, meter4];
+const meters = [meter1, meter2, meter3];
 
 const styles = StyleSheet.create({
 	container: {
@@ -56,22 +55,6 @@ const styles = StyleSheet.create({
 	    width: 50,
 	    height: 50
   	},
-
-	buttonContainer3: {
-	    marginBottom: 30,
-	    marginLeft: 20,
-	    left: 0,
-	    bottom: 0,
-	    position: "absolute"
-	},
-
-	buttonContainer4: {
-	    marginBottom: 30,
-	    marginRight: 20,
-	    right: 0,
-	    bottom: 0,
-	    position: "absolute"
-	},
 
 	meter: {
 		width: 70,
@@ -126,16 +109,12 @@ const styles = StyleSheet.create({
 
 export class GameScreen extends React.Component {
 	static navigationOptions = {
-		drawerLabel: 'Game',
-		headerStyle: {
-			backgroundColor: '#97BAFD',
-		},
-		headerTintColor: '#fff',
-		drawerIcon: ({ tintColor}) => (
-			<Image
-				styles = {[styles.icon, {tintColor:tintColor}]}
-			/>
-		),
+		// drawerLabel: 'Game',
+		// headerStyle: {
+		// 	backgroundColor: '#97BAFD',
+		// },
+		// headerTintColor: '#fff',
+		header: null,
 	};
 
 	infoButton() {
@@ -250,7 +229,6 @@ export class GameScreen extends React.Component {
 	}
 
 	render() {
-
     	return (
 
     		<View style={styles.container}>
@@ -265,9 +243,7 @@ export class GameScreen extends React.Component {
 		        	</View>
 
 		        	<View style= {styles.points} >
-
 	            		<Text style = {styles.pointsText} >Pollen Points: {pollenPoints}</Text>
-
 	        		</View>
 
 
@@ -284,7 +260,7 @@ export class GameScreen extends React.Component {
           					source={flowers[flowerIndex]}
           					style={{width: "100%", height: "100%", resizeMode: "cover"}}
         				/>
-     				 </View>
+     				</View>
 
 					<View style={styles.waterCanAndBookRow}>
 

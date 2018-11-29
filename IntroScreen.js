@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Text, View, TouchableOpacity, Animated, Image, Easing } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Text, View, TouchableOpacity, Animated, Image, Easing, ImageBackground } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#97BAFD"
+  },
+});
 
 export class IntroScreen extends React.Component {
   constructor() {
@@ -9,14 +18,15 @@ export class IntroScreen extends React.Component {
   }
 
 	static navigationOptions = {
-		title: 'Intro Screen',
-		headerStyle: {
-			backgroundColor: '#FFCB8B',
-		},
-		headerTintColor: '#fff',
+		// title: 'Intro Screen',
+		// headerStyle: {
+		// 	backgroundColor: '#97BAFD',
+		// },
+		// headerTintColor: '#fff',
+    header: null,
 	};
 
-  _onPressButton() {
+  infoButton() {
   		Alert.alert('How to play', 'Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.');
 	}
 
@@ -37,30 +47,46 @@ export class IntroScreen extends React.Component {
   }	
 
   render() {
+    // <StatusBar hidden />
+
     const spin = this.spinValue.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg']
     }); // for spinning animation
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#FFCB8B" }}>
+      <ImageBackground source={require("./assets/welcomeScreen/welcomeBG.png")} style={styles.container}>
+
+        <View>
+          <Image
+            style = {{width: 300, height: 80}}
+            source = {require("./assets/welcomeScreen/floweree.png")}
+          />
+        </View>
+
         <Animated.Image
           style={{
-            width: 100,
-            height: 100,
+            width: 130,
+            height: 130,
             transform: [{rotate: spin}] }}
-            source={require('./assets/flowers/homescreenflower.png')}
+            source={require('./assets/welcomeScreen/flowereeLogo.png')}
         />
 
-        <Button
-          title= "Play Game"
-          onPress={() => this.props.navigation.navigate('Game')}
-        />
-        <Button
-            title= "How to Play"
-            onPress={() => this._onPressButton()}
-        />
-        </View>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Game')}>
+          <Image
+            style = {{width: 170, height: 70, marginTop: 20}}
+            source = {require("./assets/welcomeScreen/play.png")}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => this.infoButton()}>
+          <Image
+            style = {{width: 170, height: 70, marginTop: 10}}
+            source = {require("./assets/welcomeScreen/howToPlay.png")}
+          />
+        </TouchableOpacity>
+
+      </ImageBackground>
     );
   }
 }

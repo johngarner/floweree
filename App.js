@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import User from "./User";
@@ -58,6 +58,7 @@ const RootStackFirst = createStackNavigator(
 
 export default class App extends React.Component {
 	render() {
+    StatusBar.setHidden(true);
     return <RootStackFirst/>;
     // if (User.props.firstLogin == true){
     //   return <RootStackFirst/>;
