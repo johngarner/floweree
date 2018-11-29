@@ -32,7 +32,7 @@ export class Clock extends Component {
   clearAllData = async () => {
     try {
       AsyncStorage.clear();
-      alert("All stored data has been cleared");
+      alert("All stored data has been cleared. Reset app to see changes.");
     }
 
     catch(error) {
