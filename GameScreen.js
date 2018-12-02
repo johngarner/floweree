@@ -6,8 +6,13 @@ import moment from "moment";
 
 import Flower from "./Flower";
 
+// Particle effects
+import CoinsExplosion from './particle_effects/CoinsExplosion';
+import StarsToTarget from './particle_effects/StarsToTarget';
+
+var fullyGrown = false;
+
 var pollenPoints = 0;
-var myBoolean = false; 
 var flowerIndex = 0;
 const flower1 = require('./assets/flowers/new/flower-01.png');
 const flower2 = require('./assets/flowers/new/flower-02.png');
@@ -59,7 +64,6 @@ const styles = StyleSheet.create({
 	meter: {
 		width: 70,
 		height: 200,
-		//borderColor: "red", borderWidth: 5,
 	},
 
 	buttonBig: {
@@ -183,6 +187,7 @@ export class GameScreen extends React.Component {
 		this.forceUpdate();
 
 		this.updatePollenPoints();
+		this.updateAlbum();
 	}
 
 	getFlowerState = async () => {
@@ -201,8 +206,8 @@ export class GameScreen extends React.Component {
 	}
 
 	updatePollenPoints(){
-		//only get pollen points when flower is fully grown
-		if (flowerIndex == 8) {
+		// Only get pollen points when flower is fully grown
+		if (flowerIndex == flowers.length-1) {
 			pollenPoints += 10;
 		}
 
@@ -224,9 +229,9 @@ export class GameScreen extends React.Component {
 		}
 	}
 
-	updateAlbum(){
-		if (flowerIndex == 8){
-			myBoolean = true; 
+	updateAlbum() {
+		if (flowerIndex == flowers.length-1) {
+			fullyGrown = true;
 		}
 	}
 
@@ -269,16 +274,20 @@ export class GameScreen extends React.Component {
         				/>
      				</View>
 
+     				
+     				<CoinsExplosion ref={emitter => (this.coinsExplosion = emitter)} />
+        			<StarsToTarget ref={emitter => (this.starsToTarget = emitter)} />
+
 					<View style={styles.waterCanAndBookRow}>
 
 						<TouchableOpacity onPress= {() => {
 							this.checkTime();
 							this.updateMeter();
+							this.starsToTarget.start();
 						}}>
 							<Image
 								source={require("./assets/buttons/wateringCan.png")}
 								style={styles.buttonBig}
-
 							/>
 						</TouchableOpacity>
 
@@ -287,7 +296,7 @@ export class GameScreen extends React.Component {
 							style={styles.buttonBig, {width: 50}}
 						/>
 
-						<TouchableOpacity onPress= {() => this.props.navigation.navigate('Pictures')}>
+						<TouchableOpacity onPress= {() => this.props.navigation.navigate('Album', {fullyGrown: JSON.stringify(fullyGrown)})}>
 							<Image
 								source={require("./assets/buttons/book.png")}
 								style={styles.buttonBig}
