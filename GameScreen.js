@@ -201,7 +201,8 @@ export class GameScreen extends React.Component {
 	}
 
 	updatePollenPoints(){
-		if (flowerIndex % 2 == 0) {
+		//only get pollen points when flower is fully grown
+		if (flowerIndex == 8) {
 			pollenPoints += 10;
 		}
 
@@ -224,8 +225,8 @@ export class GameScreen extends React.Component {
 	}
 
 	updateAlbum(){
-		if (flowerIndex == 7){
-			fullyGrown = true; 
+		if (flowerIndex == 8){
+			myBoolean = true; 
 		}
 	}
 
