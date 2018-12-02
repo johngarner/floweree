@@ -7,7 +7,7 @@ import moment from "moment";
 import Flower from "./Flower";
 
 var pollenPoints = 0;
-
+var myBoolean = false; 
 var flowerIndex = 0;
 const flower1 = require('./assets/flowers/new/flower-01.png');
 const flower2 = require('./assets/flowers/new/flower-02.png');
@@ -220,6 +220,12 @@ export class GameScreen extends React.Component {
 
 		catch(error) {
 			alert(error);
+		}
+	}
+
+	updateAlbum(){
+		if (flowerIndex == 7){
+			fullyGrown = true; 
 		}
 	}
 
