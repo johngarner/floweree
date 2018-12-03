@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const flower1 = require('./assets/flowers/new/flower1.png');
-const flower2 = require('./assets/flowers/new/flower2.png');
-const flower3 = require('./assets/flowers/new/flower3.png');
+const flower1 = require('./assets/flowers/new/flower-01.png');
+const flower2 = require('./assets/flowers/new/flower-02.png');
+const flower3 = require('./assets/flowers/new/flower-03.png');
 const flowers = [flower1, flower2, flower3];
 
 const meter1 = require('./assets/meters/meter-01.png');

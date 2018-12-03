@@ -233,11 +233,28 @@ export class GameScreen extends React.Component {
 		if (flowerIndex == flowers.length-1) {
 			fullyGrown = true;
 		}
+		AsyncStorage.setItem("fullyGrown", JSON.stringify(fullyGrown));
+	}
+
+	getFullyGrown = async () => {
+		try {
+			let savedFullyGrown = JSON.parse(await AsyncStorage.getItem("fullyGrown"));
+
+			if (savedFullyGrown != null) {
+				fullyGrown = savedFullyGrown;
+				this.forceUpdate();
+			}
+		}
+
+		catch(error) {
+			alert(error);
+		}
 	}
 
 	componentDidMount() {
 		this.getFlowerState();
 		this.getPollenPoints();
+		this.getFullyGrown();
 	}
 
 	render() {

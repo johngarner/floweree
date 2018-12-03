@@ -4,13 +4,17 @@ import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import GameScreen from "./GameScreen";
 
-const finalflower = require('./assets/flowers/new/flower-09.png');
+const finalflower = require('./assets/flowers/new/flower-01-thumbnail.png');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "flex-start",
+    alignItems: "flex-start"
+  },
+  flowerContainer: {
+    width: 200,
+    height: 200,
   },
 });
 
@@ -27,17 +31,30 @@ export class AlbumScreen extends React.Component {
     super(props)
 
     this.state = {
-      fullyGrown: (this.props.navigation.state.params.fullyGrown),
+      fullyGrown: JSON.parse(this.props.navigation.state.params.fullyGrown),
     };
   }
 
   render() {
+    if (this.state.fullyGrown == true) {
+      return (
+        <ScrollView contentContainerStyle={styles.container}>
+          
+          <View style={styles.flowerContainer}>
+            <Image
+              source={finalflower}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+          </View>
+          
+
+        </ScrollView>
+      );
+    }
   	return (
       <ScrollView contentContainerStyle={styles.container}>
 
-        if (this.state.fullyGrown == "true") {
-          <Text>Fully grown? {this.state.fullyGrown}</Text>
-       	}
+
 
       </ScrollView>
     );
