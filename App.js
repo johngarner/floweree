@@ -24,7 +24,7 @@ const RootStackFirst = createStackNavigator(
   	Store: {
   		screen: StoreScreen,
   	},
-  	Pictures: {
+  	Album: {
   		screen: AlbumScreen,
   	},
   },
