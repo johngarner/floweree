@@ -14,7 +14,8 @@ var fullyGrown = false;
 
 var pollenPoints = 0;
 var flowerIndex = 0;
-const flower1 = require('./assets/flowers/new/flower-01.png');
+const flower1 = require('./assets/dead-flower.png');
+// const flower1 = require('./assets/flowers/new/flower-01.png');
 const flower2 = require('./assets/flowers/new/flower-02.png');
 const flower3 = require('./assets/flowers/new/flower-03.png');
 const flower4 = require('./assets/flowers/new/flower-04.png');
