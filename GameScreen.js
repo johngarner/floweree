@@ -24,7 +24,40 @@ const flower6 = require('./assets/flowers/new/flower-06.png');
 const flower7 = require('./assets/flowers/new/flower-07.png');
 const flower8 = require('./assets/flowers/new/flower-08.png');
 const flower9 = require('./assets/flowers/new/flower-09.png');
-const flowers = [flower1, flower2, flower3, flower4, flower5, flower6, flower7, flower8, flower9];
+const flowers = [flower1, flower2, flower3, flower4, flower5, flower6, flower7, flower8, flower9, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7];
+
+
+const Secondflower1 = require('./assets/flowers/new/2flower-01.png');
+const Secondflower2 = require('./assets/flowers/new/2flower-02.png');
+const Secondflower3 = require('./assets/flowers/new/2flower-03.png');
+const Secondflower4 = require('./assets/flowers/new/2flower-04.png');
+const Secondflower5 = require('./assets/flowers/new/2flower-05.png');
+const Secondflower6 = require('./assets/flowers/new/2flower-06.png');
+const Secondflower7 = require('./assets/flowers/new/2flower-07.png');
+
+const Thirdflower1 = require('./assets/flowers/new/3flower-01.png');
+const Thirdflower2 = require('./assets/flowers/new/3flower-02.png');
+const Thirdflower3 = require('./assets/flowers/new/3flower-03.png');
+const Thirdflower4 = require('./assets/flowers/new/3flower-04.png');
+const Thirdflower5 = require('./assets/flowers/new/3flower-05.png');
+const Thirdflower6 = require('./assets/flowers/new/3flower-06.png');
+const Thirdflower7 = require('./assets/flowers/new/3flower-07.png');
+
+const Fourthflower1 = require('./assets/flowers/new/4flower-01.png');
+const Fourthflower2 = require('./assets/flowers/new/4flower-02.png');
+const Fourthflower3 = require('./assets/flowers/new/4flower-03.png');
+const Fourthflower4 = require('./assets/flowers/new/4flower-04.png');
+const Fourthflower5 = require('./assets/flowers/new/4flower-05.png');
+const Fourthflower6 = require('./assets/flowers/new/4flower-06.png');
+const Fourthflower7 = require('./assets/flowers/new/4flower-07.png');
+
+const Fifthflower1 = require('./assets/flowers/new/5flower-01.png');
+const Fifthflower2 = require('./assets/flowers/new/5flower-02.png');
+const Fifthflower3 = require('./assets/flowers/new/5flower-03.png');
+const Fifthflower4 = require('./assets/flowers/new/5flower-04.png');
+const Fifthflower5 = require('./assets/flowers/new/5flower-05.png');
+const Fifthflower6 = require('./assets/flowers/new/5flower-06.png');
+const Fifthflower7 = require('./assets/flowers/new/5flower-07.png');
 
 var meterIndex = 0;
 const meter1 = require('./assets/meters/meter-01.png');
@@ -207,8 +240,8 @@ export class GameScreen extends React.Component {
 	}
 
 	updatePollenPoints(){
-		// Only get pollen points when flower is fully grown
-		if (flowerIndex == flowers.length-1) {
+		// Get pollen points every other time the flower grows 
+		if (flowerIndex % 2 == 0) {
 			pollenPoints += 10;
 		}
 
