@@ -14,8 +14,8 @@ var fullyGrown = false;
 
 var pollenPoints = 0;
 var flowerIndex = 0;
-const flower1 = require('./assets/dead-flower.png');
-// const flower1 = require('./assets/flowers/new/flower-01.png');
+// const flower1 = require('./assets/dead-flower.png');
+const flower1 = require('./assets/flowers/new/flower-01.png');
 const flower2 = require('./assets/flowers/new/flower-02.png');
 const flower3 = require('./assets/flowers/new/flower-03.png');
 const flower4 = require('./assets/flowers/new/flower-04.png');
@@ -168,6 +168,28 @@ export class GameScreen extends React.Component {
 	    AsyncStorage.setItem("timeObj", JSON.stringify(timeObj));
 	}
 
+	async decreaseMeter(){
+		//get last time the flower was watered, constantly running
+		//check if that time is > 5 seconds
+		//if time>5 
+		//meter icon decreases
+		let timeObj = JSON.parse(await AsyncStorage.getItem("timeObj"));
+		let savedTime = timeObj.time;
+		let currentTime = moment();
+		let elapsedMilliseconds = currentTime.diff(savedTime);
+
+		if (elapsedMilliseconds > 5000){
+			meterIndex = meterIndex - 1;
+			this.forceUpdate();
+
+			if (meterIndex <= 0) {
+				//dead flower image
+				meterIndex = 0;
+			}
+		}
+		
+	}
+
 	updateMeter() {
 	 	meterIndex++;
 	 	if (meterIndex > meters.length-1) {
@@ -194,10 +216,12 @@ export class GameScreen extends React.Component {
 			    // 		"current time: " + currentTimeFormatted + "\n" +
 			    // 		"elapsed: " + elapsedMilliseconds + " milliseconds");
 			    
+			    //it'll only grow 5 seconds after being watered
 			    if (elapsedMilliseconds >= 5000){
+
 			    	this.updateFlower();
 			    	this.saveTimeData();
-			    }	
+			    }
 	      	} 
 	      	else {
 	      		this.saveTimeData();
@@ -289,6 +313,7 @@ export class GameScreen extends React.Component {
 		this.getFlowerState();
 		this.getPollenPoints();
 		this.getFullyGrown();
+		setInterval(this.decreaseMeter, 1000);
 	}
 
 	render() {
