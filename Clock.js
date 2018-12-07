@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    backgroundColor: '#000',
+    backgroundColor: "white",
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
     padding: 20,
     margin: 10, 
-    backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 50
   },
 });

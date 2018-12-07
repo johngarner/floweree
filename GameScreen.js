@@ -24,8 +24,6 @@ const flower6 = require('./assets/flowers/new/flower-06.png');
 const flower7 = require('./assets/flowers/new/flower-07.png');
 const flower8 = require('./assets/flowers/new/flower-08.png');
 const flower9 = require('./assets/flowers/new/flower-09.png');
-const flowers = [flower1, flower2, flower3, flower4, flower5, flower6, flower7, flower8, flower9, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7];
-
 
 const Secondflower1 = require('./assets/flowers/new/2flower-01.png');
 const Secondflower2 = require('./assets/flowers/new/2flower-02.png');
@@ -58,6 +56,8 @@ const Fifthflower4 = require('./assets/flowers/new/5flower-04.png');
 const Fifthflower5 = require('./assets/flowers/new/5flower-05.png');
 const Fifthflower6 = require('./assets/flowers/new/5flower-06.png');
 const Fifthflower7 = require('./assets/flowers/new/5flower-07.png');
+
+const flowers = [flower1, flower2, flower3, flower4, flower5, flower6, flower7, flower8, flower9, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7];
 
 var meterIndex = 0;
 const meter1 = require('./assets/meters/meter-01.png');
@@ -180,7 +180,7 @@ export class GameScreen extends React.Component {
 
 		if (elapsedMilliseconds > 5000){
 			meterIndex = meterIndex - 1;
-			this.forceUpdate();
+			// this.forceUpdate();
 
 			if (meterIndex <= 0) {
 				//dead flower image
@@ -398,7 +398,7 @@ export class GameScreen extends React.Component {
 							/>
 	  					</TouchableOpacity>
 
-	  					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store')}>
+	  					<TouchableOpacity onPress={() => this.props.navigation.navigate('Store', {pollenPoints: JSON.stringify(pollenPoints)})}>
 	  					  <Image
 	  					    source={require("./assets/buttons/shop.png")}
 	  					    style={styles.buttonBig}

@@ -9,10 +9,18 @@ export class StoreScreen extends React.Component {
 		title: 'Store',
 	};
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      pollenPoints: JSON.parse(this.props.navigation.state.params.pollenPoints),
+    };
+  }
+
   	render() {
     	return (
       		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        		<Text>This will be a store... eventually</Text>
+            <Text>Pollen Points: {this.state.pollenPoints} </Text>
         		<Clock/>
       		</View>
     	);
