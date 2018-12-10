@@ -180,20 +180,21 @@ export class GameScreen extends React.Component {
 		//if time>5 
 		//meter icon decreases
 		let timeObj = JSON.parse(await AsyncStorage.getItem("timeObj"));
-		let savedTime = timeObj.time;
-		let currentTime = moment();
-		let elapsedMilliseconds = currentTime.diff(savedTime);
+		if (timeObj != null) {
+			let savedTime = timeObj.time;
+			let currentTime = moment();
+			let elapsedMilliseconds = currentTime.diff(savedTime);
 
-		if (elapsedMilliseconds > 5000){
-			meterIndex = meterIndex - 1;
-			// this.forceUpdate();
+			if (elapsedMilliseconds > 5000){
+				meterIndex = meterIndex - 1;
+				// this.forceUpdate();
 
-			if (meterIndex <= 0) {
-				//dead flower image
-				meterIndex = 0;
+				if (meterIndex <= 0) {
+					//dead flower image
+					meterIndex = 0;
+				}
 			}
 		}
-		
 	}
 
 	updateMeter() {
