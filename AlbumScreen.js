@@ -4,7 +4,15 @@ import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import GameScreen from "./GameScreen";
 
-const finalflower = require('./assets/flowers/new/flower-01-thumbnail.png');
+const finalflower1 = require('./assets/flowers/new/flower-01-thumbnail.png');
+
+//don't have images yet
+const finalflower2 = require('./assets/flowers/new/flower-01-thumbnail.png');
+const finalflower3 = require('./assets/flowers/new/flower-01-thumbnail.png');
+const finalflower4 = require('./assets/flowers/new/flower-01-thumbnail.png');
+const finalflower5 = require('./assets/flowers/new/flower-01-thumbnail.png');
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +39,11 @@ export class AlbumScreen extends React.Component {
     super(props)
 
     this.state = {
-      fullyGrown: JSON.parse(this.props.navigation.state.params.fullyGrown),
+      fullyGrown1: JSON.parse(this.props.navigation.state.params.fullyGrown1),
+      fullyGrown2: JSON.parse(this.props.navigation.state.params.fullyGrown2),
+      fullyGrown3: JSON.parse(this.props.navigation.state.params.fullyGrown3),
+      fullyGrown4: JSON.parse(this.props.navigation.state.params.fullyGrown4),
+      fullyGrown5: JSON.parse(this.props.navigation.state.params.fullyGrown5),
     };
   }
 

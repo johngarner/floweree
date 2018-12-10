@@ -10,7 +10,11 @@ import Flower from "./Flower";
 import CoinsExplosion from './particle_effects/CoinsExplosion';
 import StarsToTarget from './particle_effects/StarsToTarget';
 
-var fullyGrown = false;
+var fullyGrown1 = false;
+var fullyGrown2 = false;
+var fullyGrown3 = false;
+var fullyGrown4 = false;
+var fullyGrown5 = false;
 
 var pollenPoints = 0;
 var flowerIndex = 0;
@@ -57,13 +61,15 @@ const Fifthflower5 = require('./assets/flowers/new/5flower-05.png');
 const Fifthflower6 = require('./assets/flowers/new/5flower-06.png');
 const Fifthflower7 = require('./assets/flowers/new/5flower-07.png');
 
-const flowers = [flower1, flower2, flower3, flower4, flower5, flower6, flower7, flower8, flower9, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7];
+const flowers = [flower1, flower2, flower3, flower4, flower7, flower8, flower9, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7];
 
 var meterIndex = 0;
 const meter1 = require('./assets/meters/meter-01.png');
 const meter2 = require('./assets/meters/meter-02.png');
 const meter3 = require('./assets/meters/meter-03.png');
 const meters = [meter1, meter2, meter3];
+
+var countFlower = 0;
 
 const styles = StyleSheet.create({
 	container: {
@@ -217,7 +223,7 @@ export class GameScreen extends React.Component {
 			    // 		"elapsed: " + elapsedMilliseconds + " milliseconds");
 			    
 			    //it'll only grow 5 seconds after being watered
-			    if (elapsedMilliseconds >= 5000){
+			    if (elapsedMilliseconds >= 1000){
 
 			    	this.updateFlower();
 			    	this.saveTimeData();
@@ -288,18 +294,61 @@ export class GameScreen extends React.Component {
 	}
 
 	updateAlbum() {
-		if (flowerIndex == flowers.length-1) {
-			fullyGrown = true;
+		if (flowerIndex >= 7) {
+			fullyGrown1 = true;
+			//alert("add to album");
 		}
-		AsyncStorage.setItem("fullyGrown", JSON.stringify(fullyGrown));
+		if( flowerIndex >= 14){
+			fullyGrown2 = true;
+		}
+		if( flowerIndex >= 21){
+			fullyGrown3 = true;
+		}
+		if( flowerIndex >= 28){
+			fullyGrown4 = true;
+		}
+		if( flowerIndex >= 32){
+			fullyGrown5 = true;
+		}
+		
+		AsyncStorage.setItem("fullyGrown1", JSON.stringify(fullyGrown1));
+		AsyncStorage.setItem("fullyGrown2", JSON.stringify(fullyGrown2));
+		AsyncStorage.setItem("fullyGrown3", JSON.stringify(fullyGrown3));
+		AsyncStorage.setItem("fullyGrown4", JSON.stringify(fullyGrown4));
+		AsyncStorage.setItem("fullyGrown5", JSON.stringify(fullyGrown5));
+
 	}
 
 	getFullyGrown = async () => {
 		try {
-			let savedFullyGrown = JSON.parse(await AsyncStorage.getItem("fullyGrown"));
+			let savedFullyGrown1 = JSON.parse(await AsyncStorage.getItem("fullyGrown1"));
 
-			if (savedFullyGrown != null) {
-				fullyGrown = savedFullyGrown;
+			if (savedFullyGrown1 != null) {
+				fullyGrown1 = savedFullyGrown1;
+				this.forceUpdate();
+			}
+			let savedFullyGrown2 = JSON.parse(await AsyncStorage.getItem("fullyGrown2"));
+
+			if (savedFullyGrown2 != null) {
+				fullyGrown2 = savedFullyGrown2;
+				this.forceUpdate();
+			}
+			let savedFullyGrown3 = JSON.parse(await AsyncStorage.getItem("fullyGrown3"));
+
+			if (savedFullyGrown3 != null) {
+				fullyGrown3 = savedFullyGrown3;
+				this.forceUpdate();
+			}
+			let savedFullyGrown4 = JSON.parse(await AsyncStorage.getItem("fullyGrown4"));
+
+			if (savedFullyGrown4 != null) {
+				fullyGrown4 = savedFullyGrown4;
+				this.forceUpdate();
+			}
+			let savedFullyGrown5 = JSON.parse(await AsyncStorage.getItem("fullyGrown5"));
+
+			if (savedFullyGrown5 != null) {
+				fullyGrown5 = savedFullyGrown5;
 				this.forceUpdate();
 			}
 		}
@@ -372,7 +421,13 @@ export class GameScreen extends React.Component {
 							style={styles.buttonBig, {width: 50}}
 						/>
 
-						<TouchableOpacity onPress= {() => this.props.navigation.navigate('Album', {fullyGrown: JSON.stringify(fullyGrown)})}>
+						<TouchableOpacity onPress= {() => this.props.navigation.navigate('Album', {
+							fullyGrown1: JSON.stringify(fullyGrown1),
+							fullyGrown2: JSON.stringify(fullyGrown2),
+							fullyGrown3: JSON.stringify(fullyGrown3),
+							fullyGrown4: JSON.stringify(fullyGrown4),
+							fullyGrown5: JSON.stringify(fullyGrown5),
+						})}>
 							<Image
 								source={require("./assets/buttons/book.png")}
 								style={styles.buttonBig}
