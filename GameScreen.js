@@ -279,7 +279,7 @@ export class GameScreen extends React.Component {
 
 	updatePollenPoints(){
 		// Get pollen points every other time the flower grows 
-		if (flowerIndex % 2 == 0) {
+		if (flowerIndex % 1 == 0) {
 			pollenPoints += 10;
 		}
 
