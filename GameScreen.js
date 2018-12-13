@@ -310,14 +310,17 @@ export class GameScreen extends React.Component {
 		if(flowerIndex == 13){
 			fullyGrown2 = true;
 			Alert.alert('Hooray!',"You've grown your second flower!");
+			this.confetti.start();
 		}
 		if(flowerIndex == 20){
 			fullyGrown3 = true;
 			Alert.alert('Huzzah!',"You've grown your third flower!");
+			this.confetti.start();
 		}
 		if(flowerIndex == 27){
 			fullyGrown4 = true;
 			Alert.alert('Great Scott!',"You've grown your fourth flower!");
+			this.confetti.start();
 		}
 		if(flowerIndex == 34){
 			fullyGrown5 = true;
