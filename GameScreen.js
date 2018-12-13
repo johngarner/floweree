@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
 	},
 	
 	points: {
-		marginTop: 20,
+		marginTop: 35,
 		top: 0,
 	    position: "absolute",
 		width: "100%",
@@ -187,7 +187,7 @@ export class GameScreen extends React.Component {
 
 			if (elapsedMilliseconds > 5000){
 				meterIndex = meterIndex - 1;
-				// this.forceUpdate();
+				this.forceUpdate();
 
 				if (meterIndex <= 0) {
 					//dead flower image

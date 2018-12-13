@@ -19,8 +19,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start"
   },
   flowerContainer: {
-    width: 200,
-    height: 200,
+    maxWidth: 125,
+    maxHeight: 125,
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
 });
 

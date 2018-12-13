@@ -25,7 +25,7 @@ export default class StarsToTarget extends Component<Props> {
         particleContainerStyle={styles.particleContainer}
         particleLife={2000}
         fromPosition={Vector(width / 2, height / 2)}
-        finalPoint={Vector(width / 2, 15)}
+        finalPoint={Vector(width / 2, 35)}
         ref={emitter => (this.emitter = emitter)}
         radius={100}
       >
