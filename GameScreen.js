@@ -8,6 +8,7 @@ import Flower from "./Flower";
 
 // Particle effects
 import StarsToTarget from './particle_effects/StarsToTarget';
+import Confetti from './particle_effects/Confetti';
 
 var fullyGrown1 = false;
 var fullyGrown2 = false;
@@ -304,6 +305,7 @@ export class GameScreen extends React.Component {
 		if (flowerIndex == 6) {
 			fullyGrown1 = true;
 			Alert.alert('Congratulations!',"You've grown your first flower!");
+			this.confetti.start();
 		}
 		if(flowerIndex == 13){
 			fullyGrown2 = true;
@@ -320,6 +322,7 @@ export class GameScreen extends React.Component {
 		if(flowerIndex == 34){
 			fullyGrown5 = true;
 			Alert.alert('Wowzah!',"You've grown your fifth and final flower; thank you for playing!");
+			this.confetti.start();
 		}
 		
 		AsyncStorage.setItem("fullyGrown1", JSON.stringify(fullyGrown1));
@@ -411,6 +414,10 @@ export class GameScreen extends React.Component {
      				</View>
 
         			<StarsToTarget ref={emitter => (this.starsToTarget = emitter)} />
+        			<Confetti
+			          colors={['red', 'blue', 'green', 'yellow', 'orange']}
+			          ref={emitter => (this.confetti = emitter)}
+			        />
 
 					<View style={styles.waterCanAndBookRow}>
 

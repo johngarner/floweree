@@ -31,8 +31,8 @@ export default class ConfettiEmitter extends Component<Props> {
         emissionRate={3}
         particleLife={10000}
         direction={90}
-        spread={120}
-        speed={8}
+        spread={100}
+        speed={15}
         segments={60}
         width={width}
         height={height}
