@@ -295,20 +295,20 @@ export class GameScreen extends React.Component {
 	}
 
 	updateAlbum() {
-		if (flowerIndex >= 7) {
+		if (flowerIndex >= 6) {
 			fullyGrown1 = true;
 			//alert("add to album");
 		}
-		if( flowerIndex >= 14){
+		if(flowerIndex >= 13){
 			fullyGrown2 = true;
 		}
-		if( flowerIndex >= 21){
+		if(flowerIndex >= 20){
 			fullyGrown3 = true;
 		}
-		if( flowerIndex >= 28){
+		if(flowerIndex >= 27){
 			fullyGrown4 = true;
 		}
-		if( flowerIndex >= 32){
+		if(flowerIndex >= 34){
 			fullyGrown5 = true;
 		}
 		

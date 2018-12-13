@@ -4,13 +4,11 @@ import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import GameScreen from "./GameScreen";
 
-const finalflower1 = require('./assets/flowers/new/flower-01-thumbnail.png');
-
-//don't have images yet
-const finalflower2 = require('./assets/flowers/new/flower-01-thumbnail.png');
-const finalflower3 = require('./assets/flowers/new/flower-01-thumbnail.png');
-const finalflower4 = require('./assets/flowers/new/flower-01-thumbnail.png');
-const finalflower5 = require('./assets/flowers/new/flower-01-thumbnail.png');
+const finalflower1 = require('./assets/flowers/thumbnails/flower-01-thumbnail.png');
+const finalflower2 = require('./assets/flowers/thumbnails/flower-04-thumbnail.png');
+const finalflower3 = require('./assets/flowers/thumbnails/flower-05-thumbnail.png');
+const finalflower4 = require('./assets/flowers/thumbnails/flower-02-thumbnail.png');
+const finalflower5 = require('./assets/flowers/thumbnails/flower-03-thumbnail.png');
 
 
 
@@ -48,13 +46,29 @@ export class AlbumScreen extends React.Component {
   }
 
   render() {
-    if (this.state.fullyGrown == true) {
+    if (this.state.fullyGrown5 == true) {
       return (
         <ScrollView contentContainerStyle={styles.container}>
           
           <View style={styles.flowerContainer}>
             <Image
-              source={finalflower}
+              source={finalflower1}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower2}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower3}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower4}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower5}
               style={{width: "100%", height: "100%", resizeMode: "cover"}}
             />
           </View>
@@ -63,6 +77,95 @@ export class AlbumScreen extends React.Component {
         </ScrollView>
       );
     }
+
+    if (this.state.fullyGrown4 == true) {
+      return (
+        <ScrollView contentContainerStyle={styles.container}>
+          
+          <View style={styles.flowerContainer}>
+            <Image
+              source={finalflower1}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower2}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower3}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower4}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+          </View>
+          
+
+        </ScrollView>
+      );
+    }
+
+    if (this.state.fullyGrown3 == true) {
+      return (
+        <ScrollView contentContainerStyle={styles.container}>
+          
+          <View style={styles.flowerContainer}>
+            <Image
+              source={finalflower1}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower2}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower3}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+          </View>
+          
+
+        </ScrollView>
+      );
+    }
+
+    if (this.state.fullyGrown2 == true) {
+      return (
+        <ScrollView contentContainerStyle={styles.container}>
+          
+          <View style={styles.flowerContainer}>
+            <Image
+              source={finalflower1}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+            <Image
+              source={finalflower2}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+          </View>
+          
+
+        </ScrollView>
+      );
+    }
+
+    if (this.state.fullyGrown1 == true) {
+      return (
+        <ScrollView contentContainerStyle={styles.container}>
+          
+          <View style={styles.flowerContainer}>
+            <Image
+              source={finalflower1}
+              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+            />
+          </View>
+          
+
+        </ScrollView>
+      );
+    }
+
   	return (
       <ScrollView contentContainerStyle={styles.container}>
 
