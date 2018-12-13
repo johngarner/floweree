@@ -7,7 +7,6 @@ import moment from "moment";
 import Flower from "./Flower";
 
 // Particle effects
-import CoinsExplosion from './particle_effects/CoinsExplosion';
 import StarsToTarget from './particle_effects/StarsToTarget';
 
 var fullyGrown1 = false;
@@ -179,21 +178,27 @@ export class GameScreen extends React.Component {
 		//check if that time is > 5 seconds
 		//if time>5 
 		//meter icon decreases
-		let timeObj = JSON.parse(await AsyncStorage.getItem("timeObj"));
-		if (timeObj != null) {
-			let savedTime = timeObj.time;
-			let currentTime = moment();
-			let elapsedMilliseconds = currentTime.diff(savedTime);
+		try {
+			let timeObj = JSON.parse(await AsyncStorage.getItem("timeObj"));
+			if (timeObj != null) {
+				let savedTime = timeObj.time;
+				let currentTime = moment();
+				let elapsedMilliseconds = currentTime.diff(savedTime);
 
-			if (elapsedMilliseconds > 5000){
-				meterIndex = meterIndex - 1;
-				this.forceUpdate();
+				if (elapsedMilliseconds > 1000){
+					meterIndex = meterIndex - 1;
+					// this.forceUpdate();
 
-				if (meterIndex <= 0) {
-					//dead flower image
-					meterIndex = 0;
+					if (meterIndex <= 0) {
+						//dead flower image
+						meterIndex = 0;
+					}
 				}
 			}
+		}
+
+		catch(error) {
+			alert(error);
 		}
 	}
 
@@ -228,6 +233,7 @@ export class GameScreen extends React.Component {
 
 			    	this.updateFlower();
 			    	this.saveTimeData();
+			    	this.starsToTarget.start();
 			    }
 	      	} 
 	      	else {
@@ -295,21 +301,25 @@ export class GameScreen extends React.Component {
 	}
 
 	updateAlbum() {
-		if (flowerIndex >= 6) {
+		if (flowerIndex == 6) {
 			fullyGrown1 = true;
-			//alert("add to album");
+			Alert.alert('Congratulations!',"You've grown your first flower!");
 		}
-		if(flowerIndex >= 13){
+		if(flowerIndex == 13){
 			fullyGrown2 = true;
+			Alert.alert('Hooray!',"You've grown your second flower!");
 		}
-		if(flowerIndex >= 20){
+		if(flowerIndex == 20){
 			fullyGrown3 = true;
+			Alert.alert('Huzzah!',"You've grown your third flower!");
 		}
-		if(flowerIndex >= 27){
+		if(flowerIndex == 27){
 			fullyGrown4 = true;
+			Alert.alert('Great Scott!',"You've grown your fourth flower!");
 		}
-		if(flowerIndex >= 34){
+		if(flowerIndex == 34){
 			fullyGrown5 = true;
+			Alert.alert('Wowzah!',"You've grown your fifth and final flower; thank you for playing!");
 		}
 		
 		AsyncStorage.setItem("fullyGrown1", JSON.stringify(fullyGrown1));
@@ -400,8 +410,6 @@ export class GameScreen extends React.Component {
         				/>
      				</View>
 
-     				
-     				<CoinsExplosion ref={emitter => (this.coinsExplosion = emitter)} />
         			<StarsToTarget ref={emitter => (this.starsToTarget = emitter)} />
 
 					<View style={styles.waterCanAndBookRow}>
@@ -409,7 +417,7 @@ export class GameScreen extends React.Component {
 						<TouchableOpacity onPress= {() => {
 							this.checkTime();
 							this.updateMeter();
-							this.starsToTarget.start();
+							
 						}}>
 							<Image
 								source={require("./assets/buttons/wateringCan.png")}
