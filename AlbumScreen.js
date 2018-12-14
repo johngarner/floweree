@@ -10,21 +10,25 @@ const finalflower3 = require('./assets/flowers/thumbnails/flower-05-thumbnail.pn
 const finalflower4 = require('./assets/flowers/thumbnails/flower-02-thumbnail.png');
 const finalflower5 = require('./assets/flowers/thumbnails/flower-03-thumbnail.png');
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    alignItems: "flex-start"
+    alignItems: "flex-start",
   },
   flowerContainer: {
-    maxWidth: 125,
-    maxHeight: 125,
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: "center",
   },
+  flower: {
+    width: 175,
+    height: 175,
+    resizeMode: "cover",
+    marginTop: 20,
+    marginBottom: 20,
+  }
 });
 
 export class AlbumScreen extends React.Component {
@@ -56,23 +60,23 @@ export class AlbumScreen extends React.Component {
           <View style={styles.flowerContainer}>
             <Image
               source={finalflower1}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower2}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower3}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower4}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower5}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
           </View>
           
@@ -88,19 +92,19 @@ export class AlbumScreen extends React.Component {
           <View style={styles.flowerContainer}>
             <Image
               source={finalflower1}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower2}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower3}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower4}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
           </View>
           
@@ -116,15 +120,15 @@ export class AlbumScreen extends React.Component {
           <View style={styles.flowerContainer}>
             <Image
               source={finalflower1}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower2}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower3}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
           </View>
           
@@ -140,11 +144,11 @@ export class AlbumScreen extends React.Component {
           <View style={styles.flowerContainer}>
             <Image
               source={finalflower1}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
             <Image
               source={finalflower2}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
           </View>
           
@@ -160,7 +164,7 @@ export class AlbumScreen extends React.Component {
           <View style={styles.flowerContainer}>
             <Image
               source={finalflower1}
-              style={{width: "100%", height: "100%", resizeMode: "cover"}}
+              style={styles.flower}
             />
           </View>
           

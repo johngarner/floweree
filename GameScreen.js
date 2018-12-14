@@ -4,8 +4,6 @@ import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import moment from "moment";
 
-import Flower from "./Flower";
-
 // Particle effects
 import StarsToTarget from './particle_effects/StarsToTarget';
 import Confetti from './particle_effects/Confetti';
@@ -17,8 +15,10 @@ var fullyGrown4 = false;
 var fullyGrown5 = false;
 
 var pollenPoints = 0;
-var flowerIndex = 0;
-// const flower1 = require('./assets/dead-flower.png');
+var flowerIndex = 1;
+
+const deadFlower = require('./assets/dead-flower.png');
+
 const flower1 = require('./assets/flowers/new/flower-01.png');
 const flower2 = require('./assets/flowers/new/flower-02.png');
 const flower3 = require('./assets/flowers/new/flower-03.png');
@@ -61,13 +61,14 @@ const Fifthflower5 = require('./assets/flowers/new/5flower-05.png');
 const Fifthflower6 = require('./assets/flowers/new/5flower-06.png');
 const Fifthflower7 = require('./assets/flowers/new/5flower-07.png');
 
-const flowers = [flower1, flower2, flower3, flower4, flower7, flower8, flower9, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7];
+const flowers = [deadFlower, flower1, flower2, flower3, flower4, flower7, flower8, flower9, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7];
 
 var meterIndex = 0;
 const meter1 = require('./assets/meters/meter-01.png');
 const meter2 = require('./assets/meters/meter-02.png');
 const meter3 = require('./assets/meters/meter-03.png');
-const meters = [meter1, meter2, meter3];
+const meter4 = require('./assets/meters/meter-04.png');
+const meters = [meter1, meter2, meter3, meter4];
 
 var countFlower = 0;
 
@@ -165,6 +166,15 @@ export class GameScreen extends React.Component {
     	Alert.alert('How to play', 'Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.');
 	}
 
+	saveTimeDataDeath() {
+	    let timeObjj = {
+	      time: moment(),
+	      timeFormatted: moment().format("hh:mm:ss A"),
+	    }
+
+	    AsyncStorage.setItem("timeObjj", JSON.stringify(timeObjj));
+	}
+
 	saveTimeData() {
 	    let timeObj = {
 	      time: moment(),
@@ -174,41 +184,13 @@ export class GameScreen extends React.Component {
 	    AsyncStorage.setItem("timeObj", JSON.stringify(timeObj));
 	}
 
-	async decreaseMeter(){
-		//get last time the flower was watered, constantly running
-		//check if that time is > 5 seconds
-		//if time>5 
-		//meter icon decreases
-		try {
-			let timeObj = JSON.parse(await AsyncStorage.getItem("timeObj"));
-			if (timeObj != null) {
-				let savedTime = timeObj.time;
-				let currentTime = moment();
-				let elapsedMilliseconds = currentTime.diff(savedTime);
-
-				if (elapsedMilliseconds > 1000){
-					meterIndex = meterIndex - 1;
-					// this.forceUpdate();
-
-					if (meterIndex <= 0) {
-						//dead flower image
-						meterIndex = 0;
-					}
-				}
-			}
-		}
-
-		catch(error) {
-			alert(error);
-		}
-	}
-
 	updateMeter() {
 	 	meterIndex++;
 	 	if (meterIndex > meters.length-1) {
 	 		meterIndex = meters.length-1;
 	 	}
 		this.forceUpdate();
+		AsyncStorage.setItem("meterState", JSON.stringify(meterIndex));
 	 }
 
 	checkTime = async () => {
@@ -277,6 +259,21 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+	getMeterState = async () => {
+		try {
+			let meterState = JSON.parse(await AsyncStorage.getItem("meterState"));
+
+			if (meterState != null) {
+				meterIndex = meterState;
+				this.forceUpdate();
+			}
+		}
+
+		catch(error) {
+			alert(error);
+		}
+	}
+
 	updatePollenPoints(){
 		// Get pollen points every other time the flower grows 
 		if (flowerIndex % 1 == 0) {
@@ -302,27 +299,27 @@ export class GameScreen extends React.Component {
 	}
 
 	updateAlbum() {
-		if (flowerIndex == 6) {
+		if (flowerIndex == 7) {
 			fullyGrown1 = true;
 			Alert.alert('Congratulations!',"You've grown your first flower!");
 			this.confetti.start();
 		}
-		if(flowerIndex == 13){
+		if(flowerIndex == 14){
 			fullyGrown2 = true;
 			Alert.alert('Hooray!',"You've grown your second flower!");
 			this.confetti.start();
 		}
-		if(flowerIndex == 20){
+		if(flowerIndex == 21){
 			fullyGrown3 = true;
 			Alert.alert('Huzzah!',"You've grown your third flower!");
 			this.confetti.start();
 		}
-		if(flowerIndex == 27){
+		if(flowerIndex == 28){
 			fullyGrown4 = true;
 			Alert.alert('Great Scott!',"You've grown your fourth flower!");
 			this.confetti.start();
 		}
-		if(flowerIndex == 34){
+		if(flowerIndex == 35){
 			fullyGrown5 = true;
 			Alert.alert('Wowzah!',"You've grown your fifth and final flower; thank you for playing!");
 			this.confetti.start();
@@ -375,11 +372,63 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+	async checkDeathTime() {
+	 	try {
+	      	let timeObjj = await AsyncStorage.getItem("timeObjj");
+	      	let parsedTimeObj = JSON.parse(timeObjj);
+
+	      	if (parsedTimeObj != null) {
+	      		let savedTime = parsedTimeObj.time;
+			    let savedTimeFormatted = parsedTimeObj.timeFormatted;
+
+			    let currentTime = moment();
+			    let currentTimeFormatted = moment().format("hh:mm:ss A");
+
+			    let elapsedMilliseconds = currentTime.diff(savedTime);
+
+			   	if (60000 <= elapsedMilliseconds && elapsedMilliseconds < 120000) {
+			   		meterIndex = 2
+			   		this.forceUpdate();
+
+			   		this.saveTimeDataDeath(); 
+			   	}
+
+			   	if (120000 <= elapsedMilliseconds && elapsedMilliseconds < 180000) {
+			   		meterIndex = 1
+			   		this.forceUpdate();
+
+			   		this.saveTimeDataDeath(); 
+			   	}
+
+			   	if (180000 <= elapsedMilliseconds && elapsedMilliseconds < 240000) {
+			   		meterIndex = 0
+			   		this.forceUpdate();
+
+			   		this.saveTimeDataDeath(); 
+			   	}
+
+			   	if (240000 <= elapsedMilliseconds) {
+			   		meterIndex = 0
+			   		flowerIndex = 0;
+			   		this.forceUpdate();
+
+			   		this.saveTimeDataDeath(); 
+			   	}
+
+			}
+		}
+		catch(error) {
+			alert(error);
+		}
+	}
+
 	componentDidMount() {
 		this.getFlowerState();
+		this.getMeterState();
 		this.getPollenPoints();
 		this.getFullyGrown();
-		setInterval(this.decreaseMeter, 1000);
+		this.checkDeathTime();
+		this.saveTimeDataDeath(); 
 	}
 
 	render() {
