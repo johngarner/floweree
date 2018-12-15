@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Text, View, TouchableOpacity, Animated, Image, Easing, ImageBackground } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
+
+//Designated locations for objects
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -11,18 +13,16 @@ const styles = StyleSheet.create({
   },
 });
 
+
 export class IntroScreen extends React.Component {
+  //Opening screen containing two buttons, one which tells users how to play and the other which takes them to the game
+  
   constructor() {
     super();
     this.spinValue = new Animated.Value(0);
   }
 
 	static navigationOptions = {
-		// title: 'Intro Screen',
-		// headerStyle: {
-		// 	backgroundColor: '#97BAFD',
-		// },
-		// headerTintColor: '#fff',
     header: null,
 	};
 

@@ -9,8 +9,11 @@ import {
   Alert
 } from 'react-native';
 
+//Clock import from react moment
 import moment from "moment";
 
+
+//Designated locations for objects
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -27,7 +30,11 @@ const styles = StyleSheet.create({
   },
 });
 
+
+
 export class Clock extends Component {
+  ///This file is used in the Store Screen and helps clear all the data from the app so we can start the game from scratch.
+  ///This file is mostly used for testing purposes.
 
   clearAllData = async () => {
     try {

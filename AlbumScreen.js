@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { Alert, AppRegistry, Button, StyleSheet, Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
+
 import GameScreen from "./GameScreen";
 
+
+//Images to be displayed (the framing has been cropped compared to the original files)
 const finalflower1 = require('./assets/flowers/thumbnails/flower-01-thumbnail.png');
 const finalflower2 = require('./assets/flowers/thumbnails/flower-04-thumbnail.png');
 const finalflower3 = require('./assets/flowers/thumbnails/flower-05-thumbnail.png');
 const finalflower4 = require('./assets/flowers/thumbnails/flower-02-thumbnail.png');
 const finalflower5 = require('./assets/flowers/thumbnails/flower-03-thumbnail.png');
 
+
+
+//Designated locations for objects
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -32,6 +38,10 @@ const styles = StyleSheet.create({
 });
 
 export class AlbumScreen extends React.Component {
+  ///This page stores images of the finished flowers. It draws information from the game screen which checks if the flower has 
+  ///reached it's final growth state (ie. a boolean value set to true). The images are displayed 2 per row on a scrolling screen.
+
+
 	static navigationOptions = {
 		title: 'Album',
 		headerStyle: {

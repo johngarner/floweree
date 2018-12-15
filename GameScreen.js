@@ -4,19 +4,23 @@ import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import moment from "moment";
 
-// Particle effects
+// Particles effect import from react native particles
 import StarsToTarget from './particle_effects/StarsToTarget';
 import Confetti from './particle_effects/Confetti';
 
+// checks if the flower is fully grown (accessed in AlbumScreen)
 var fullyGrown1 = false;
 var fullyGrown2 = false;
 var fullyGrown3 = false;
 var fullyGrown4 = false;
 var fullyGrown5 = false;
 
+
 var pollenPoints = 0;
 var flowerIndex = 1;
 
+
+//Imported artwork found in Assets folder
 const deadFlower = require('./assets/dead-flower.png');
 
 const flower1 = require('./assets/flowers/new/flower-01.png');
@@ -72,6 +76,8 @@ const meters = [meter1, meter2, meter3, meter4];
 
 var countFlower = 0;
 
+
+// Designated locations for objects
 const styles = StyleSheet.create({
 	container: {
 	  	flex: 1,
@@ -152,20 +158,23 @@ const styles = StyleSheet.create({
 
 });
 
+
 export class GameScreen extends React.Component {
+	// This file holds all the game mechanism such as the timing for the meter, the flower growth, the meter and flower interaction, and the pollen points.
+
+
 	static navigationOptions = {
-		// drawerLabel: 'Game',
-		// headerStyle: {
-		// 	backgroundColor: '#97BAFD',
-		// },
-		// headerTintColor: '#fff',
 		header: null,
 	};
 
+
+	// Information button text
 	infoButton() {
     	Alert.alert('How to play', 'Click the yellow watering can to water your flower. The flower needs to be watered once every 24 hours in order for the flower to grow.');
 	}
 
+
+	// Time tracker for how long it has been since the flower has been watered once the app has been closed
 	saveTimeDataDeath() {
 	    let timeObjj = {
 	      time: moment(),
@@ -175,6 +184,7 @@ export class GameScreen extends React.Component {
 	    AsyncStorage.setItem("timeObjj", JSON.stringify(timeObjj));
 	}
 
+	// Time tracker for the last time the plant has been watered when the app is open
 	saveTimeData() {
 	    let timeObj = {
 	      time: moment(),
@@ -184,6 +194,7 @@ export class GameScreen extends React.Component {
 	    AsyncStorage.setItem("timeObj", JSON.stringify(timeObj));
 	}
 
+	//updates the meter by changing the index and subsequently the image displayed. 
 	updateMeter() {
 	 	meterIndex++;
 	 	if (meterIndex > meters.length-1) {
@@ -207,11 +218,7 @@ export class GameScreen extends React.Component {
 
 			    let elapsedMilliseconds = currentTime.diff(savedTime);
 
-			    // alert("saved time: " + savedTimeFormatted + "\n" +
-			    // 		"current time: " + currentTimeFormatted + "\n" +
-			    // 		"elapsed: " + elapsedMilliseconds + " milliseconds");
-			    
-			    //it'll only grow 5 seconds after being watered
+				// for testing purposes the flower is set to grow every second if properly watered
 			    if (elapsedMilliseconds >= 1000){
 
 			    	this.updateFlower();
@@ -230,6 +237,9 @@ export class GameScreen extends React.Component {
 	    }
 	}
 
+
+
+	// updates flower image based on index similar to updateMeter
 	updateFlower() {
 	 	flowerIndex++;
 	 	if (flowerIndex > flowers.length-1) {
@@ -244,6 +254,8 @@ export class GameScreen extends React.Component {
 		this.updateAlbum();
 	}
 
+
+	// getter method to check the flower state 
 	getFlowerState = async () => {
 		try {
 			let flowerState = JSON.parse(await AsyncStorage.getItem("flowerState"));
@@ -259,6 +271,8 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+
+	//getter method to check the meter state
 	getMeterState = async () => {
 		try {
 			let meterState = JSON.parse(await AsyncStorage.getItem("meterState"));
@@ -274,8 +288,9 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+
+	//get 10 pollen points for every flower growth 
 	updatePollenPoints(){
-		// Get pollen points every other time the flower grows 
 		if (flowerIndex % 1 == 0) {
 			pollenPoints += 10;
 		}
@@ -283,6 +298,8 @@ export class GameScreen extends React.Component {
 		AsyncStorage.setItem("pollenPoints", JSON.stringify(pollenPoints));
 	}
 
+
+	//getter method for pollen points (to be used in the Store in the future- beyond MVP)
 	getPollenPoints = async () => {
 		try {
 			let savedPollenPoints = JSON.parse(await AsyncStorage.getItem("pollenPoints"));
@@ -298,6 +315,8 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+
+	//Checks if the flower has been completely grown and alerts the user when it has. Used in Album Screen 
 	updateAlbum() {
 		if (flowerIndex == 7) {
 			fullyGrown1 = true;
@@ -333,6 +352,8 @@ export class GameScreen extends React.Component {
 
 	}
 
+
+	// getter method for fully grown flowers. Used in Album Screen
 	getFullyGrown = async () => {
 		try {
 			let savedFullyGrown1 = JSON.parse(await AsyncStorage.getItem("fullyGrown1"));
@@ -372,6 +393,8 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+	//checks to see how much time has passed since the flower was last watered when the user reopens the app
+	//if it has been longer than the designated time the meter goes down (note- times have been shortened for testing/demo purposes)
 	async checkDeathTime() {
 	 	try {
 	      	let timeObjj = await AsyncStorage.getItem("timeObjj");
@@ -422,6 +445,8 @@ export class GameScreen extends React.Component {
 		}
 	}
 
+
+	// Calls methods
 	componentDidMount() {
 		this.getFlowerState();
 		this.getMeterState();
