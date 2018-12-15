@@ -17,17 +17,15 @@ var fullyGrown5 = false;
 var pollenPoints = 0;
 var flowerIndex = 1;
 
-const deadFlower = require('./assets/dead-flower.png');
+const deadFlower = require('./assets/flowers/dead-flower.png');
 
-const flower1 = require('./assets/flowers/new/flower-01.png');
-const flower2 = require('./assets/flowers/new/flower-02.png');
-const flower3 = require('./assets/flowers/new/flower-03.png');
-const flower4 = require('./assets/flowers/new/flower-04.png');
-const flower5 = require('./assets/flowers/new/flower-05.png');
-const flower6 = require('./assets/flowers/new/flower-06.png');
-const flower7 = require('./assets/flowers/new/flower-07.png');
-const flower8 = require('./assets/flowers/new/flower-08.png');
-const flower9 = require('./assets/flowers/new/flower-09.png');
+const Firstflower1 = require('./assets/flowers/new/1flower-01.png');
+const Firstflower2 = require('./assets/flowers/new/1flower-02.png');
+const Firstflower3 = require('./assets/flowers/new/1flower-03.png');
+const Firstflower4 = require('./assets/flowers/new/1flower-04.png');
+const Firstflower5 = require('./assets/flowers/new/1flower-05.png');
+const Firstflower6 = require('./assets/flowers/new/1flower-06.png');
+const Firstflower7 = require('./assets/flowers/new/1flower-07.png');
 
 const Secondflower1 = require('./assets/flowers/new/2flower-01.png');
 const Secondflower2 = require('./assets/flowers/new/2flower-02.png');
@@ -61,7 +59,7 @@ const Fifthflower5 = require('./assets/flowers/new/5flower-05.png');
 const Fifthflower6 = require('./assets/flowers/new/5flower-06.png');
 const Fifthflower7 = require('./assets/flowers/new/5flower-07.png');
 
-const flowers = [deadFlower, flower1, flower2, flower3, flower4, flower7, flower8, flower9, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7];
+const flowers = [deadFlower, Firstflower1, Firstflower2, Firstflower3, Firstflower4, Firstflower5, Firstflower6, Firstflower7, Fourthflower1, Fourthflower2, Fourthflower3, Fourthflower4, Fourthflower5, Fourthflower6, Fourthflower7, Fifthflower1, Fifthflower2, Fifthflower3, Fifthflower4,Fifthflower5, Fifthflower6, Fifthflower7, Secondflower1, Secondflower2, Secondflower3, Secondflower4, Secondflower5, Secondflower6, Secondflower7, Thirdflower1, Thirdflower2, Thirdflower3, Thirdflower4, Thirdflower5, Thirdflower6, Thirdflower7];
 
 var meterIndex = 0;
 const meter1 = require('./assets/meters/meter-01.png');
