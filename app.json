@@ -22,7 +22,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.garner.floweree"
+      "bundleIdentifier": "com.tigo.floweree"
     }
   }
 }
