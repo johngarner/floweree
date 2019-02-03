@@ -12,7 +12,10 @@ Floweree is a cross platform game app which allows users to grow virtual plants 
 	<img src="readme-img/floweree-screens-mockup.png">
 </p>
 
-![](readme-img/gifs/floweree-intro.gif)   ![](readme-img/gifs/first-flower.gif)
+<p align="center">
+	<img src="readme-img/gifs/floweree-intro.gif" height="450">
+	<img src="readme-img/gifs/first-flower.gif" height="450">
+</p>
 
 # New Developer Steps
 
