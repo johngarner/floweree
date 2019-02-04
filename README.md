@@ -18,6 +18,8 @@
 	<img src="readme-img/gifs/floweree-intro.gif">
 	<img src="readme-img/gifs/first-flower.gif">
 	<img src="readme-img/gifs/first-flower-congrats.gif">
+	<img src="readme-img/gifs/second-flower.gif">
+	<img src="readme-img/gifs/second-flower-congrats.gif">
 </p>
 
 ## New Developer Steps
